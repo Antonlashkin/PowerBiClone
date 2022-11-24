@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace BigProject.Classes
 {
-    public class DataCacheStorageBilder
+    public class DataCacheStorageBuilder
     {
         private DataCacheStorage dataCacheStorage;
 
-        public DataCacheStorageBilder() { 
+        public DataCacheStorageBuilder() { 
         dataCacheStorage = new DataCacheStorage();
         }
-        public DataCacheStorageBilder(DataCacheStorage dataCacheStorage)
+        public DataCacheStorageBuilder(DataCacheStorage dataCacheStorage)
         {
             this.dataCacheStorage = dataCacheStorage;
         }

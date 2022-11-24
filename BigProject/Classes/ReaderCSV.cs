@@ -18,7 +18,7 @@ namespace BigProject.Classes
 
             if (fileInfo.Extension == ".csv")
             {
-                DataCacheStorageBilder dcsb = new DataCacheStorageBilder();
+                DataCacheStorageBuilder dcsb = new DataCacheStorageBuilder();
                 dcsb.setFileLocation(FileName);
                 using (StreamReader sr = new StreamReader(FileName))
                 {
