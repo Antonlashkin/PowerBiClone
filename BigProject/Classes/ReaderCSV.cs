@@ -10,6 +10,19 @@ namespace BigProject.Classes
 {
     class ReaderCSV
     {
+        private static ReaderCSV instance;
+        
+        private ReaderCSV()
+        {
+        }
+        public static  ReaderCSV getInstance()
+        {
+            if(instance == null)
+                instance = new ReaderCSV();
+            return instance;
+
+
+        }
 
         public void reader(string FileName, ref DataCacheStorage data)
         {

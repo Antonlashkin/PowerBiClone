@@ -48,8 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\DataCacheStorageBilder.cs" />
-    <Compile Include="Classes\ReadeCSV.cs" />
+    <Compile Include="Classes\DataCacheStorageBuilder.cs" />
+    <Compile Include="Classes\ReaderCSV.cs" />
     <Compile Include="Classes\DataCacheStorage.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

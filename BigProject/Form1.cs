@@ -22,22 +22,29 @@ namespace BigProject
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataCacheStorage data = new DataCacheStorage();
-            ReaderCSV R = new ReaderCSV();
-            R.reader("D:/TestCSV.csv", ref data);
-            A.Add(data);
-           // List < List<object>> dataList = new List<List<object>>();
-           // dataList = data.dataToList();
-           // foreach (var colums in data.DataColumn) { dataGridView1.Columns.Add(colums.Key,colums.Key); }
-           // foreach (var obj in dataList)
-           // {
+            using (OpenFileDialog fdb = new OpenFileDialog())
+            {
+                if (fdb.ShowDialog() == DialogResult.OK)
+                {
+                  
+                    string path = fdb.FileName;
+                    DataCacheStorage data = new DataCacheStorage();
+                    ReaderCSV.getInstance().reader(path, ref data);
+                    A.Add(data);
+                }
+            }
+            // List < List<object>> dataList = new List<List<object>>();
+            // dataList = data.dataToList();
+            // foreach (var colums in data.DataColumn) { dataGridView1.Columns.Add(colums.Key,colums.Key); }
+            // foreach (var obj in dataList)
+            // {
             //    dataGridView1.DataSource = obj;
-           // }
+            // }
             /* for (int i = 0; i< dataList.Count;i++)
              {
                  foreach (var obj in dataList[i]) {
@@ -50,26 +57,33 @@ namespace BigProject
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.chart1.Series[0].Points.Clear();
-            Axis xAxis = new Axis();
-            xAxis.Title = A.ElementAt(0).ColumnsName[0];
-            Axis yAxis = new Axis();
-            yAxis.Title = A.ElementAt(0).ColumnsName[1];
-            this.chart1.ChartAreas[0].AxisX = xAxis;
-            this.chart1.ChartAreas[0].AxisY = yAxis;
-            List<List<string>> dataList = new List<List<string>>();
-            dataList = A.ElementAt(0).DataColumn;
-            foreach(var elements in dataList)
+            try
             {
-                object x = elements[0];
-                object y = elements[1];
-                this.chart1.Series[0].Points.AddXY(x,y);
+                this.chart1.Series[0].Points.Clear();
+                Axis xAxis = new Axis();
+                xAxis.Title = A.ElementAt(0).ColumnsName[0];
+                Axis yAxis = new Axis();
+                yAxis.Title = A.ElementAt(0).ColumnsName[2];
+                this.chart1.ChartAreas[0].AxisX = xAxis;
+                this.chart1.ChartAreas[0].AxisY = yAxis;
+                List<List<string>> dataList = new List<List<string>>();
+                dataList = A.ElementAt(0).DataColumn;
+                foreach (var elements in dataList)
+                {
+                    object x = elements[0];
+                    object y = elements[2];
+                    this.chart1.Series[0].Points.AddXY(x, y);
+                }
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -77,6 +91,25 @@ namespace BigProject
         {
 
         }
-    }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //dataGridView1.AutoGenerateColumns = true;
+            //dataGridView1.DataSource = A.ElementAt(0).ColumnsName;
+            foreach (var colums in A.ElementAt(0).ColumnsName)
+            {
+                dataGridView1.Columns.Add(colums, colums);
+            }
+            int i = 0;
+            foreach (var colums in A.ElementAt(0).ColumnsName)
+            {
+                foreach(var obj in A.ElementAt(0).DataColumn[i])
+                {
+                    //dataGridView1.Rows[1].SetValues(obj);
+                }
+                i++;
+            }
+        }
+        //[A.ElementAt(0).ColumnsName.IndexOf(colums)]
+    }
 }
