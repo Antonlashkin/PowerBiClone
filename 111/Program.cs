@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BigProject
+namespace _111
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// Главная точка входа для приложения.
@@ -16,7 +16,7 @@ namespace BigProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new View());
         }
     }
 }
