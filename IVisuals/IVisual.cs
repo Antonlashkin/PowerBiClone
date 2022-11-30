@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IServices;
 
-namespace DataServices
+namespace IVisuals
 {
-    public class DataSourceAccessService : IService
+    public interface IVisual
     {
-        // Чтение файлов
     }
 }

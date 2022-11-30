@@ -35,5 +35,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Presenter\Presenter.cs" />
+    <Compile Include="Presenter\ViewPresenter.cs" />
+    <Compile Include="Views\IView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{9d4060e9-41bf-4550-834d-1a6a42a7ac04}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IService\IServices.csproj">
+      <Project>{4705f50a-b22c-45fb-9a4b-f5ee40bf2292}</Project>
+      <Name>IServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

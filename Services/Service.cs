@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using IServices;
 
-namespace DataServices
+namespace Services
 {
-    public class DataTransformService : IService
+    public class Service : IService
     {
-       // Изменение в DataCacheRepositories
+        public 
     }
 }

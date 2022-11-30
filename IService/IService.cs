@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IServices;
+using Entities;
 
-namespace DataServices
+namespace IServices
 {
-    public class DataSourceAccessService : IService
+    public interface IService 
     {
-        // Чтение файлов
+        Entitie GetData();
     }
 }
