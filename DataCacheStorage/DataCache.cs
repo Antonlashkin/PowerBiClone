@@ -7,8 +7,14 @@ using Entities;
 
 namespace DataCacheStorage
 {
-    internal class DataCache
+    public class DataCache
     {
-        //Хранение данных в оперативной памяти
+        private List<Entitie> _entitiesList;
+
+        public DataCache()
+        {
+            _entitiesList = new List<Entitie>();    
+        }
+        public List<Entitie> EntitiesList { get { return _entitiesList; } set { _entitiesList = value; } }
     }
 }
