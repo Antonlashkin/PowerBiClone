@@ -1,30 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Entitie
+    public class DataTable
     {
         //Класс для хранения данных
         private List<string> _columnsName;
         private List<List<string>> _dataColumn;
 
-        public Entitie()
+        public DataTable()
         {
             _columnsName = new List<string>();
             _dataColumn = new List<List<string>>();
         }
+
         public List<string> ColumnsName { get { return _columnsName; } set { _columnsName = value; } }
 
         public List<List<string>> DataColumn { get { return _dataColumn; } set { _dataColumn = value; } }
 
-        public int Dataset()
+        public override string ToString()
         {
-            return 0;
+            return base.ToString() + ":" + _columnsName.ToString() + ":" + _dataColumn.ToString();
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode() + _columnsName.GetHashCode() + _dataColumn.GetHashCode();
+        }
+
     }
 }

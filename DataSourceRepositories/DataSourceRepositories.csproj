@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ACF63781-C4D0-4CD2-A50A-9284834C1931}</ProjectGuid>
+    <ProjectGuid>{EB0E9C75-5BA3-4BCA-B775-8A96FED3CF86}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>DataSourceRepositories</RootNamespace>
     <AssemblyName>DataSourceRepositories</AssemblyName>
@@ -36,15 +36,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSourceRepositories.cs" />
+    <Compile Include="DataSourceRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{9d4060e9-41bf-4550-834d-1a6a42a7ac04}</Project>
+      <Project>{037d195c-5f55-4ba1-ab0d-45190d45f782}</Project>
       <Name>Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\IDataSourceRepositories\IDataSourceRepositories.csproj">
-      <Project>{8e02f6b6-ecf1-46e3-bce9-2961a2b389ec}</Project>
+      <Project>{96d95c81-0617-4a6b-8878-3f663b4aac88}</Project>
       <Name>IDataSourceRepositories</Name>
     </ProjectReference>
   </ItemGroup>

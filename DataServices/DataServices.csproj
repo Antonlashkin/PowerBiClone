@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5762E1A1-A7CD-4BDC-B487-5BB0A0AB5034}</ProjectGuid>
+    <ProjectGuid>{6A8BAB9F-9ABF-435C-8A52-95577013870B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>DataServices</RootNamespace>
     <AssemblyName>DataServices</AssemblyName>
@@ -36,21 +36,30 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSourceAccessService.cs" />
+    <Compile Include="CSVFileAccessService.cs" />
     <Compile Include="DataTransformService.cs" />
     <Compile Include="DataVizualizationService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper">
+      <HintPath>..\..\..\PowerBiClone\BigProject\bin\Debug\CsvHelper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{9d4060e9-41bf-4550-834d-1a6a42a7ac04}</Project>
+      <Project>{037d195c-5f55-4ba1-ab0d-45190d45f782}</Project>
       <Name>Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IService\IServices.csproj">
-      <Project>{4705f50a-b22c-45fb-9a4b-f5ee40bf2292}</Project>
+    <ProjectReference Include="..\IDataSourceRepositories\IDataSourceRepositories.csproj">
+      <Project>{96d95c81-0617-4a6b-8878-3f663b4aac88}</Project>
+      <Name>IDataSourceRepositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IServices\IServices.csproj">
+      <Project>{ca67c0c8-4de6-4aee-91d4-5dd2abded7af}</Project>
       <Name>IServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\IVisuals\IVisuals.csproj">
-      <Project>{4a1f5d9c-c98b-4a3b-b414-884692c76505}</Project>
+      <Project>{bcd3927d-6849-4667-ad3b-70461c8880e1}</Project>
       <Name>IVisuals</Name>
     </ProjectReference>
   </ItemGroup>

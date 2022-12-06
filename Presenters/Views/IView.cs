@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities;
 
-namespace IDataServices
+namespace Presenters.Views
 {
-    public interface IDataVizualizationService
+    public interface IView
     {
+        DataTable ObjectData { get; set; }
     }
 }

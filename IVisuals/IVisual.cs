@@ -8,5 +8,6 @@ namespace IVisuals
 {
     public interface IVisual
     {
+
     }
 }

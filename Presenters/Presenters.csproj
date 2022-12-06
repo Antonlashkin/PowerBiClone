@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4705F50A-B22C-45FB-9A4B-F5EE40BF2292}</ProjectGuid>
+    <ProjectGuid>{137AB989-E669-4636-867C-CB3B6FD91B38}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>IService</RootNamespace>
-    <AssemblyName>IService</AssemblyName>
+    <RootNamespace>Presenters</RootNamespace>
+    <AssemblyName>Presenters</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -36,17 +36,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IService.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{9d4060e9-41bf-4550-834d-1a6a42a7ac04}</Project>
+      <Project>{037d195c-5f55-4ba1-ab0d-45190d45f782}</Project>
       <Name>Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IDataSourceRepositories\IDataSourceRepositories.csproj">
-      <Project>{8e02f6b6-ecf1-46e3-bce9-2961a2b389ec}</Project>
-      <Name>IDataSourceRepositories</Name>
+    <ProjectReference Include="..\IServices\IServices.csproj">
+      <Project>{ca67c0c8-4de6-4aee-91d4-5dd2abded7af}</Project>
+      <Name>IServices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Presenter\InitPresenter.cs" />
+    <Compile Include="Presenter\ViewPresenter.cs" />
+    <Compile Include="Views\IView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

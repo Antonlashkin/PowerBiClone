@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace _111
+namespace PowerBIv2
 {
-    public partial class View : Form
+    public partial class Form1 : Form
     {
-        public View()
+        public Form1()
         {
             InitializeComponent();
-        }
-
-        private void View_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

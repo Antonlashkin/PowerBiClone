@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Entities;
 
-namespace Presenter.Views
+namespace IDataSourceRepositories
 {
-    public interface IView
+    public interface IDataSourceRep
     {
-        Entitie ObjectData { get; set; }
+        DataTable GetTable();
     }
 }

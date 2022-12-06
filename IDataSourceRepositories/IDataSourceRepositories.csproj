@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8E02F6B6-ECF1-46E3-BCE9-2961A2B389EC}</ProjectGuid>
+    <ProjectGuid>{96D95C81-0617-4A6B-8878-3F663B4AAC88}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>IDataSourceRepositories</RootNamespace>
     <AssemblyName>IDataSourceRepositories</AssemblyName>
@@ -36,7 +36,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDataSourceRepositories.cs" />
+    <Compile Include="IDataSourceRepo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{037d195c-5f55-4ba1-ab0d-45190d45f782}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

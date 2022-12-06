@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _111.Properties
+namespace PowerBIv2.Properties
 {
 
 

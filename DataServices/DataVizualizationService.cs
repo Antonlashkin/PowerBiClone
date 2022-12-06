@@ -9,7 +9,7 @@ using IVisuals;
 
 namespace DataServices
 {
-    public class DataVizualizationService : IService
+    public class DataVizualizationService : IBasicService
     {
         // Передача данных для визуализации
         private IVisual visual;
@@ -19,7 +19,7 @@ namespace DataServices
             this.visual = visual;
         }
 
-        public Entitie GetData()
+        public DataTable GetData()
         {
             return null;
         }

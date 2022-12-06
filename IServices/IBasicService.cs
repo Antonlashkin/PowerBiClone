@@ -7,8 +7,9 @@ using Entities;
 
 namespace IServices
 {
-    public interface IService 
+    public interface IBasicService
     {
-        Entitie GetData();
+        DataTable GetData();
     }
 }
+

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4E976900-AEDD-4415-BC74-4FCCB6573223}</ProjectGuid>
+    <ProjectGuid>{41BA72E8-0532-4998-8294-F590E4C10896}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>IDataServices</RootNamespace>
-    <AssemblyName>IDataServices</AssemblyName>
+    <RootNamespace>IDataCacheStorage</RootNamespace>
+    <AssemblyName>IDataCacheStorage</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -36,9 +36,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDataSourceAccessService.cs" />
-    <Compile Include="IDataTransformService.cs" />
-    <Compile Include="IDataVizualizationService.cs" />
+    <Compile Include="IDataCache.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IDataSourceRepositories\IDataSourceRepositories.csproj">
+      <Project>{96d95c81-0617-4a6b-8878-3f663b4aac88}</Project>
+      <Name>IDataSourceRepositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

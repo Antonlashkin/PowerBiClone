@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9D4060E9-41BF-4550-834D-1A6A42A7AC04}</ProjectGuid>
+    <ProjectGuid>{037D195C-5F55-4BA1-AB0D-45190D45F782}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Entities</RootNamespace>
     <AssemblyName>Entities</AssemblyName>
@@ -36,7 +36,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entitie.cs" />
+    <Compile Include="DataTable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

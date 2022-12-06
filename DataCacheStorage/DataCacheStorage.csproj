@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FF2E477A-B022-49F5-A40A-303110FFA3D3}</ProjectGuid>
+    <ProjectGuid>{3117793C-63F9-4DEC-8D50-2BCA3D8089D0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>DataCacheStorage</RootNamespace>
     <AssemblyName>DataCacheStorage</AssemblyName>
@@ -40,8 +40,16 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{9d4060e9-41bf-4550-834d-1a6a42a7ac04}</Project>
+      <Project>{037d195c-5f55-4ba1-ab0d-45190d45f782}</Project>
       <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDataCacheStorage\IDataCacheStorage.csproj">
+      <Project>{41ba72e8-0532-4998-8294-f590e4c10896}</Project>
+      <Name>IDataCacheStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDataSourceRepositories\IDataSourceRepositories.csproj">
+      <Project>{96d95c81-0617-4a6b-8878-3f663b4aac88}</Project>
+      <Name>IDataSourceRepositories</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

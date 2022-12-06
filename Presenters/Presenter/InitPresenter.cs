@@ -1,4 +1,4 @@
-﻿using Presenter.Views;
+﻿using Presenters.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,16 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using IServices;
 
-namespace Presenter.Presenter
+namespace Presenters.Presenter
 {
-    public class Presenter : ViewPresenter<IView>
+    public class InitPresenter : ViewPresenter<IView>
     {
-        private IService _services;
+        private IDataSourceAccessService _services;
         public override void InitView()
         {
-            view.ObjectData = _services.GetData();
+
         }
-        public Presenter(IView view, IService service) : base(view)
+        public InitPresenter(IView view, IDataSourceAccessService service) : base(view)
         {
             _services = service;
         }
