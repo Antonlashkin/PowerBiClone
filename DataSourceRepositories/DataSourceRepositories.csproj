@@ -39,6 +39,10 @@
     <Compile Include="DataSourceRepositories.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataServices\DataServices.csproj">
+      <Project>{5762E1A1-A7CD-4BDC-B487-5BB0A0AB5034}</Project>
+      <Name>DataServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{9d4060e9-41bf-4550-834d-1a6a42a7ac04}</Project>
       <Name>Entities</Name>
@@ -46,6 +50,10 @@
     <ProjectReference Include="..\IDataSourceRepositories\IDataSourceRepositories.csproj">
       <Project>{8e02f6b6-ecf1-46e3-bce9-2961a2b389ec}</Project>
       <Name>IDataSourceRepositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IService\IServices.csproj">
+      <Project>{4705F50A-B22C-45FB-9A4B-F5EE40BF2292}</Project>
+      <Name>IServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
