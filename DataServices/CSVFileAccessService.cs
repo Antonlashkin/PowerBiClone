@@ -32,23 +32,23 @@ namespace DataServices
         }
 
         public bool reader(string FileName)
-        {
-            FileInfo fileInfo = new FileInfo(FileName);
-
-                using (StreamReader sr = new StreamReader(FileName))
+        { 
+                using (StreamReader stream = new StreamReader(FileName))
                 {
-                    string[] keys = sr.ReadLine().Split(';');
+                    char separator = DetectSeparator(FileName);
+                    string[] keys = stream.ReadLine().Split(separator);
                     List<string> values = keys.ToList();
-                    data.GetTable().ColumnsName = values;
                     List<List<string>> readData = new List<List<string>>();
-                    while (!sr.EndOfStream)
+                    while (!stream.EndOfStream)
                     {
-                        string[] par = sr.ReadLine().Split(';');
+                        string[] par = stream.ReadLine().Split(separator);
                         List<string> addedColumn = par.ToList();
                         readData.Add(addedColumn);
                     }
+                    data.GetTable().ColumnsName = values;
                     data.GetTable().DataColumn = readData;
                 }
+           
                 return true;
         }
 
@@ -74,5 +74,24 @@ namespace DataServices
             }
             return true;
         }
+
+        public static char DetectSeparator(string csvFilePath)
+        {
+            string[] lines = File.ReadAllLines(csvFilePath);
+            return DetectSeparator(lines);
+        }
+
+        public static char DetectSeparator(string[] lines)
+        {
+            char[] SeparatorChars = { ';', '|', '\t', ',' };
+            var q = SeparatorChars.Select(sep => new
+            { Separator = sep, Found = lines.GroupBy(line => line.Count(ch => ch == sep)) })
+                    .OrderByDescending(res => res.Found.Count(grp => grp.Key > 0))
+                    .ThenBy(res => res.Found.Count())
+                    .First();
+
+            return q.Separator;
+        }
+
     }
 }
