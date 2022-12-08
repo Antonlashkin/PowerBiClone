@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{137AB989-E669-4636-867C-CB3B6FD91B38}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{B4B057F4-E445-4396-B55D-4BC616F62BDF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Presenters</RootNamespace>
     <AssemblyName>Presenters</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,22 +31,69 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{037d195c-5f55-4ba1-ab0d-45190d45f782}</Project>
-      <Name>Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IServices\IServices.csproj">
-      <Project>{ca67c0c8-4de6-4aee-91d4-5dd2abded7af}</Project>
-      <Name>IServices</Name>
-    </ProjectReference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Presenter\InitPresenter.cs" />
     <Compile Include="Presenter\ViewPresenter.cs" />
+    <Compile Include="Presenter\VizualizationPresenter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\InitView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\InitView.Designer.cs">
+      <DependentUpon>InitView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\IView.cs" />
+    <Compile Include="Views\TableVizualiztionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TableVizualiztionView.Designer.cs">
+      <DependentUpon>TableVizualiztionView.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataCacheStorage\DataCacheStorage.csproj">
+      <Project>{12c853e4-9efe-4fb5-9125-ae2aa777ae42}</Project>
+      <Name>DataCacheStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataServices\DataServices.csproj">
+      <Project>{c04131d7-b265-4477-8e79-6874f77488b9}</Project>
+      <Name>DataServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{1d30f923-4aec-4613-910a-04bb85874128}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDataSourcePerositories\IDataSourcePerositories.csproj">
+      <Project>{0146182A-5EF3-4609-9ADD-2A20CDCDE5DB}</Project>
+      <Name>IDataSourcePerositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IServices\IServices.csproj">
+      <Project>{68b6230a-acdd-4f98-8554-f4116087d05f}</Project>
+      <Name>IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IVisuals\IVisuals.csproj">
+      <Project>{01603AA1-BD67-4665-ADD0-93C8D12963B8}</Project>
+      <Name>IVisuals</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\InitView.resx">
+      <DependentUpon>InitView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TableVizualiztionView.resx">
+      <DependentUpon>TableVizualiztionView.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entities;
 
-namespace IDataSourceRepositories
+namespace IDataSourcePerositories
 {
     public interface IDataSourceRep
     {

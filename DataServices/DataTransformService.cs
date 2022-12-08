@@ -3,16 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IServices;
 using Entities;
+using IServices;
+using IDataSourcePerositories;
+using DataServices;
+using DataSourceRepositories;
+using DataCacheStorage;
 
 namespace DataServices
 {
     public class DataTransformService : IBasicService
     {
-        public DataTable GetData()
+        private IDataSourceRep _repository;
+
+        public DataTransformService(IDataSourceRep repo) {
+            _repository = repo;
+        }
+        public DataTransformService()
         {
-            throw new NotImplementedException();
+            _repository = new DataSourceRepo();
+        }
+        public IDataSourceRep GetData()
+        {
+            return _repository;
         }
     }
 }

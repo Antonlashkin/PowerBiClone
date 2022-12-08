@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6A8BAB9F-9ABF-435C-8A52-95577013870B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{C04131D7-B265-4477-8E79-6874F77488B9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DataServices</RootNamespace>
     <AssemblyName>DataServices</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,33 +31,47 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <Reference Include="CsvHelper">
+      <HintPath>..\..\..\PowerBiClone\BigProject\bin\Debug\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CSVFileAccessService.cs" />
     <Compile Include="DataTransformService.cs" />
     <Compile Include="DataVizualizationService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="CsvHelper">
-      <HintPath>..\..\..\PowerBiClone\BigProject\bin\Debug\CsvHelper.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\DataCacheStorage\DataCacheStorage.csproj">
+      <Project>{12c853e4-9efe-4fb5-9125-ae2aa777ae42}</Project>
+      <Name>DataCacheStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataSourceRepositories\DataSourceRepositories.csproj">
+      <Project>{999f5e4f-78e2-43bf-ba9e-784d43655296}</Project>
+      <Name>DataSourceRepositories</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{037d195c-5f55-4ba1-ab0d-45190d45f782}</Project>
+      <Project>{1d30f923-4aec-4613-910a-04bb85874128}</Project>
       <Name>Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IDataSourceRepositories\IDataSourceRepositories.csproj">
-      <Project>{96d95c81-0617-4a6b-8878-3f663b4aac88}</Project>
-      <Name>IDataSourceRepositories</Name>
+    <ProjectReference Include="..\IDataSourcePerositories\IDataSourcePerositories.csproj">
+      <Project>{0146182a-5ef3-4609-9add-2a20cdcde5db}</Project>
+      <Name>IDataSourcePerositories</Name>
     </ProjectReference>
     <ProjectReference Include="..\IServices\IServices.csproj">
-      <Project>{ca67c0c8-4de6-4aee-91d4-5dd2abded7af}</Project>
+      <Project>{68b6230a-acdd-4f98-8554-f4116087d05f}</Project>
       <Name>IServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\IVisuals\IVisuals.csproj">
-      <Project>{bcd3927d-6849-4667-ad3b-70461c8880e1}</Project>
+      <Project>{01603aa1-bd67-4665-add0-93c8d12963b8}</Project>
       <Name>IVisuals</Name>
     </ProjectReference>
   </ItemGroup>

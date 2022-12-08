@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{579EC93F-DD63-4DDC-B683-E9072C628BBE}</ProjectGuid>
+    <ProjectGuid>{DD50E2A7-35E4-460A-A5A9-014AFC4B8BA8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>PowerBIv2</RootNamespace>
     <AssemblyName>PowerBIv2</AssemblyName>
@@ -75,6 +75,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataCacheStorage\DataCacheStorage.csproj">
+      <Project>{12c853e4-9efe-4fb5-9125-ae2aa777ae42}</Project>
+      <Name>DataCacheStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataServices\DataServices.csproj">
+      <Project>{c04131d7-b265-4477-8e79-6874f77488b9}</Project>
+      <Name>DataServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataSourceRepositories\DataSourceRepositories.csproj">
+      <Project>{999f5e4f-78e2-43bf-ba9e-784d43655296}</Project>
+      <Name>DataSourceRepositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{1d30f923-4aec-4613-910a-04bb85874128}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDataCacheStorage\IDataCacheStorage.csproj">
+      <Project>{a24448d8-e424-489f-ab7a-a7d429d4a152}</Project>
+      <Name>IDataCacheStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDataSourcePerositories\IDataSourcePerositories.csproj">
+      <Project>{0146182a-5ef3-4609-9add-2a20cdcde5db}</Project>
+      <Name>IDataSourcePerositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IServices\IServices.csproj">
+      <Project>{68b6230a-acdd-4f98-8554-f4116087d05f}</Project>
+      <Name>IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IVisuals\IVisuals.csproj">
+      <Project>{01603aa1-bd67-4665-add0-93c8d12963b8}</Project>
+      <Name>IVisuals</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Presenters\Presenters.csproj">
+      <Project>{b4b057f4-e445-4396-b55d-4bc616f62bdf}</Project>
+      <Name>Presenters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Visuals\Visuals.csproj">
+      <Project>{ed1cfd70-505c-431e-a542-391100f8003b}</Project>
+      <Name>Visuals</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,20 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CsvHelper.Configuration;
 using CsvHelper;
-using System.Globalization;
-using System.IO;
+using IDataSourcePerositories;
 using IServices;
-using IDataSourceRepositories;
+using DataSourceRepositories;
 
 namespace DataServices
 {
     public class CSVFileAccessService : IDataSourceAccessService
     {
         private IDataSourceRep data;
+
+        public CSVFileAccessService(IDataSourceRep data)
+        {
+            this.data = data;
+        }
+        public CSVFileAccessService()
+        {
+            data = new DataSourceRepo();
+        }
 
         public IDataSourceRep GetData()
         {
@@ -25,8 +35,6 @@ namespace DataServices
         {
             FileInfo fileInfo = new FileInfo(FileName);
 
-            if (fileInfo.Extension == ".csv")
-            {
                 using (StreamReader sr = new StreamReader(FileName))
                 {
                     string[] keys = sr.ReadLine().Split(';');
@@ -42,9 +50,6 @@ namespace DataServices
                     data.GetTable().DataColumn = readData;
                 }
                 return true;
-            }
-            else throw new Exception("No such format");
-
         }
 
         public bool writer(string FileName)

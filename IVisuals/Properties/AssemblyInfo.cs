@@ -4,23 +4,23 @@ using System.Runtime.InteropServices;
 
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
-// связанных со сборкой.
-[assembly: AssemblyTitle("PowerBIv2")]
+// связанные со сборкой.
+[assembly: AssemblyTitle("IVisuals")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PowerBIv2")]
+[assembly: AssemblyProduct("IVisuals")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Установка значения False для параметра ComVisible делает типы в этой сборке невидимыми
 // для компонентов COM. Если необходимо обратиться к типу в этой сборке через
-// COM, следует установить атрибут ComVisible в TRUE для этого типа.
+// COM, задайте атрибуту ComVisible значение TRUE для этого типа.
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("dd50e2a7-35e4-460a-a5a9-014afc4b8ba8")]
+[assembly: Guid("01603aa1-bd67-4665-add0-93c8d12963b8")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //

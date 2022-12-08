@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entities;
+using IDataSourcePerositories;
 
 namespace Presenters.Views
 {
     public interface IView
     {
-        DataTable ObjectData { get; set; }
+        IDataSourceRep Data { get;}
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using IServices;
 using Entities;
 using IVisuals;
+using IDataSourcePerositories;
 
 namespace DataServices
 {
@@ -19,7 +20,7 @@ namespace DataServices
             this.visual = visual;
         }
 
-        public DataTable GetData()
+        public IDataSourceRep GetData()
         {
             return null;
         }

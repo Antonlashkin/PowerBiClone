@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IVisuals
+namespace Visuals
 {
-    public interface IVisual
+    public class Class1
     {
     }
 }

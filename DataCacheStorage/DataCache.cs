@@ -5,18 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using Entities;
 using IDataCacheStorage;
-using IDataSourceRepositories;
+using IDataSourcePerositories;
 
 namespace DataCacheStorage
 {
-    public class DataCache : IDataCache
+    public  class DataCache : IDataCache
     {
-        private List<DataTable> _entitiesList;
+        private  static List<DataTable> _entitiesList;
+        private static DataCache _cache;
 
-        public DataCache()
+        private DataCache()
         {
             _entitiesList = new List<DataTable>();
         }
+        public static DataCache getInstance()
+        {
+            if (_cache == null)
+                _cache = new DataCache();
+            return _cache;
+
+
+        }
+
         public List<DataTable> EntitiesList { get { return _entitiesList; } set { _entitiesList = value; } }
 
         public void AddTable(IDataSourceRep _bufferData)
