@@ -54,7 +54,7 @@ namespace DataServices
 
         public bool writer(string FileName)
         {
-            using (var writer = new StreamWriter("D:/DataWriter.csv", false, Encoding.GetEncoding("windows-1251")))
+            using (var writer = new StreamWriter(FileName, false, Encoding.GetEncoding("windows-1251")))
             {
                 var csvConfig = new CsvConfiguration(CultureInfo.GetCultureInfo("ru-Ru"))
                 {

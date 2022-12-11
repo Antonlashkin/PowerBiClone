@@ -39,9 +39,13 @@ namespace Presenters.Presenter
                 {
                     string _path = fdb.FileName;
                     FileInfo fileInfo = new FileInfo(_path);
-                    if (fileInfo.Extension == ".csv") 
+                    if (fileInfo.Extension == ".csv" && _services == null) 
                     {
                         _services = new CSVFileAccessService();   
+                    }
+                    else if(fileInfo.Extension == ".csv" && _services != null)
+                    {
+                        _services = new CSVFileAccessService(_services.GetData());
                     }
                     return _path;
                 }

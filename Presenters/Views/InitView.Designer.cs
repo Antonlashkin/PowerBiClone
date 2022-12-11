@@ -32,11 +32,12 @@
             this.select = new System.Windows.Forms.Button();
             this.ToTableVizualization = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.saveToFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // loadFile
             // 
-            this.loadFile.Location = new System.Drawing.Point(39, 115);
+            this.loadFile.Location = new System.Drawing.Point(39, 106);
             this.loadFile.Name = "loadFile";
             this.loadFile.Size = new System.Drawing.Size(185, 43);
             this.loadFile.TabIndex = 0;
@@ -66,17 +67,28 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(39, 178);
+            this.textBox1.Location = new System.Drawing.Point(39, 203);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(185, 22);
             this.textBox1.TabIndex = 4;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // saveToFile
+            // 
+            this.saveToFile.Location = new System.Drawing.Point(39, 155);
+            this.saveToFile.Name = "saveToFile";
+            this.saveToFile.Size = new System.Drawing.Size(185, 42);
+            this.saveToFile.TabIndex = 5;
+            this.saveToFile.Text = "Save to File";
+            this.saveToFile.UseVisualStyleBackColor = true;
+            this.saveToFile.Click += new System.EventHandler(this.saveToFile_Click);
             // 
             // InitView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.saveToFile);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ToTableVizualization);
             this.Controls.Add(this.select);
@@ -95,5 +107,6 @@
         private System.Windows.Forms.Button select;
         private System.Windows.Forms.Button ToTableVizualization;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button saveToFile;
     }
 }

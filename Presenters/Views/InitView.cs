@@ -23,6 +23,7 @@ namespace Presenters.Views
             InitializeComponent();
             loadFile.Enabled = false;
             ToTableVizualization.Enabled = false;
+            saveToFile.Enabled = false;
         }
 
         public IDataSourceRep Data { get => presenter.Service.GetData(); }
@@ -36,6 +37,7 @@ namespace Presenters.Views
         {
             presenter.Service.reader(textBox1.Text);
             ToTableVizualization.Enabled = true;
+            saveToFile.Enabled = true;
         }
 
         private void select_Click(object sender, EventArgs e)
@@ -56,6 +58,12 @@ namespace Presenters.Views
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void saveToFile_Click(object sender, EventArgs e)
+        {
+            presenter.Service.writer(presenter.SelectFile());
+            MessageBox.Show("The file has been saved");
         }
     }
 }
