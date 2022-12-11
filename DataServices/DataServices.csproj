@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="CSVFileAccessService.cs" />
     <Compile Include="DataTransformService.cs" />
-    <Compile Include="DataVizualizationService.cs" />
+    <Compile Include="DataVisualizationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,17 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Presenters.Presenter
 {
-    internal class VizualizationPresenter: ViewPresenter<IView>
+    internal class VisualizationPresenter: ViewPresenter<IView>
     {
         private IBasicService _services;
         public override void InitView()
         {
 
         }
-        public VizualizationPresenter(IView view,IBasicService service) : base(view)
+        public VisualizationPresenter(IView view,IBasicService service) : base(view)
         {
             _services = service;
         }
@@ -53,5 +54,20 @@ namespace Presenters.Presenter
             }
         }
 
+        public void DisplayChart(Chart chart1, DataGridView dataGrid)
+        {
+            chart1.Series[0].Points.Clear();
+            Axis xAxis = new Axis();
+            Axis yAxis = new Axis();
+            chart1.ChartAreas[0].AxisX = xAxis;
+            chart1.ChartAreas[0].AxisY = yAxis;
+            for (int i = 0; i < dataGrid.Rows.Count; i++)
+            {
+                int x = Convert.ToInt32(dataGrid.Rows[i].Cells[0].Value);
+                int y = Convert.ToInt32(dataGrid.Rows[i].Cells[1].Value);
+                chart1.Series[0].Points.AddXY(x, y);
+
+            }
+        }
     }
 }
