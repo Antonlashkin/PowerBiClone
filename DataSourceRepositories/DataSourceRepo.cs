@@ -20,5 +20,10 @@ namespace DataSourceRepositories
         public DataTable DataBuffer { get { return _bufferData; } set { _bufferData = value; } }
 
         public DataTable GetTable() { return _bufferData; }
+
+        public void RemoveLastRow()
+        {
+            _bufferData.DataColumn.RemoveAt(_bufferData.DataColumn.Count - 1);
+        }
     }
 }

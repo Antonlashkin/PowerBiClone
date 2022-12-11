@@ -10,5 +10,6 @@ namespace IDataSourcePerositories
     public interface IDataSourceRep
     {
         DataTable GetTable();
+        void RemoveLastRow();
     }
 }
