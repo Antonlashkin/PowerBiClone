@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CsvHelper">
-      <HintPath>..\..\..\PowerBiClone\BigProject\bin\Debug\CsvHelper.dll</HintPath>
+      <HintPath>C:\Users\USER\Downloads\Telegram Desktop\CsvHelper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="CSVFileAccessService.cs" />
     <Compile Include="DataTransformService.cs" />
-    <Compile Include="DataVizualizationService.cs" />
+    <Compile Include="DataVisualizationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

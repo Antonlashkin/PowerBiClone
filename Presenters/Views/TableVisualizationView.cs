@@ -14,15 +14,15 @@ using System.Windows.Forms;
 
 namespace Presenters.Views
 {
-    public partial class TableVizualiztionView : Form, IView
+    public partial class TableVisualizationView : Form, IView
     {
         private InitView _parentForm;
-        private VizualizationPresenter _presenter;
+        private VisualizationPresenter _presenter;
        
-        public TableVizualiztionView(InitView form)
+        public TableVisualizationView(InitView form)
         {
             DataTransformService dvs = new DataTransformService(form.Data);
-            _presenter = new VizualizationPresenter(this,dvs);
+            _presenter = new VisualizationPresenter(this,dvs);
             _parentForm = form; 
             InitializeComponent();
         }
@@ -52,6 +52,11 @@ namespace Presenters.Views
             
         }
 
-        
+        private void showChart_Click(object sender, EventArgs e)
+        {
+            ChartView chartView = new ChartView(this);
+            chartView.ShowDialog();
+
+        }
     }
 }

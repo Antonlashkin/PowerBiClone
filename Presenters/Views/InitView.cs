@@ -46,7 +46,7 @@ namespace Presenters.Views
 
         private void toTableVizualization_Click(object sender, EventArgs e)
         {
-            TableVizualiztionView tvzv = new TableVizualiztionView(this);
+            TableVisualizationView tvzv = new TableVisualizationView(this);
             this.Hide();
             tvzv.ShowDialog();
 

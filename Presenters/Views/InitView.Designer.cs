@@ -40,7 +40,7 @@
             this.loadFile.Name = "loadFile";
             this.loadFile.Size = new System.Drawing.Size(185, 43);
             this.loadFile.TabIndex = 0;
-            this.loadFile.Text = "LoadFile";
+            this.loadFile.Text = "Load File";
             this.loadFile.UseVisualStyleBackColor = true;
             this.loadFile.Click += new System.EventHandler(this.ReadFile_Click);
             // 

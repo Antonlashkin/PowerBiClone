@@ -10,12 +10,12 @@ using IDataSourcePerositories;
 
 namespace DataServices
 {
-    public class DataVizualizationService : IBasicService
+    public class DataVisualizationService : IBasicService
     {
         // Передача данных для визуализации
         private IVisual visual;
 
-        public DataVizualizationService(IVisual visual)
+        public DataVisualizationService(IVisual visual)
         {
             this.visual = visual;
         }

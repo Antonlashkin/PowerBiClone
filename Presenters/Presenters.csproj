@@ -35,6 +35,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,8 +46,14 @@
   <ItemGroup>
     <Compile Include="Presenter\InitPresenter.cs" />
     <Compile Include="Presenter\ViewPresenter.cs" />
-    <Compile Include="Presenter\VizualizationPresenter.cs" />
+    <Compile Include="Presenter\VisualizationPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ChartView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChartView.Designer.cs">
+      <DependentUpon>ChartView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\InitView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,11 +61,11 @@
       <DependentUpon>InitView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IView.cs" />
-    <Compile Include="Views\TableVizualiztionView.cs">
+    <Compile Include="Views\TableVisualizationView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\TableVizualiztionView.Designer.cs">
-      <DependentUpon>TableVizualiztionView.cs</DependentUpon>
+    <Compile Include="Views\TableVisualizationView.Designer.cs">
+      <DependentUpon>TableVisualizationView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -88,11 +95,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Views\ChartView.resx">
+      <DependentUpon>ChartView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\InitView.resx">
       <DependentUpon>InitView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\TableVizualiztionView.resx">
-      <DependentUpon>TableVizualiztionView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\TableVisualizationView.resx">
+      <DependentUpon>TableVisualizationView.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
