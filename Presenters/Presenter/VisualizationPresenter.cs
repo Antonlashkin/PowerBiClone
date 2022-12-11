@@ -54,17 +54,26 @@ namespace Presenters.Presenter
             }
         }
 
+        public void RemoveLastRow()
+        {
+            _services.GetData().RemoveLastRow();
+        }
+
         public void DisplayChart(Chart chart1, DataGridView dataGrid)
         {
             chart1.Series[0].Points.Clear();
             Axis xAxis = new Axis();
+            xAxis.Title = dataGrid.Columns[0].HeaderText;
             Axis yAxis = new Axis();
+            yAxis.Title = dataGrid.Columns[1].HeaderText;
             chart1.ChartAreas[0].AxisX = xAxis;
             chart1.ChartAreas[0].AxisY = yAxis;
+            //chart1.ChartAreas[0].AxisX = xAxis;
+            //chart1.ChartAreas[0].AxisY = yAxis;
             for (int i = 0; i < dataGrid.Rows.Count; i++)
             {
-                int x = Convert.ToInt32(dataGrid.Rows[i].Cells[0].Value);
-                int y = Convert.ToInt32(dataGrid.Rows[i].Cells[1].Value);
+                double x = Convert.ToDouble(dataGrid.Rows[i].Cells[0].Value);
+                double y = Convert.ToDouble(dataGrid.Rows[i].Cells[1].Value);
                 chart1.Series[0].Points.AddXY(x, y);
 
             }

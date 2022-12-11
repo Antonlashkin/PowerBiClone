@@ -25,6 +25,7 @@ namespace Presenters.Views
             _presenter = new VisualizationPresenter(this,dvs);
             _parentForm = form; 
             InitializeComponent();
+            showChar.Enabled = false;
         }
 
         public IDataSourceRep Data => _presenter.Service.GetData();
@@ -48,6 +49,7 @@ namespace Presenters.Views
         private void showTable_Click(object sender, EventArgs e)
         {
             _presenter.DisplayTable(dataTable);
+            showChar.Enabled = true;
 
             
         }
@@ -57,6 +59,12 @@ namespace Presenters.Views
             ChartView chartView = new ChartView(this);
             chartView.ShowDialog();
 
+        }
+
+        private void removeRow_Click(object sender, EventArgs e)
+        {
+            _presenter.RemoveLastRow();
+            _presenter.DisplayTable(dataTable);
         }
     }
 }
