@@ -1,5 +1,6 @@
 ﻿using DataCacheStorage;
 using DataServices;
+using IDataSourcePerositories;
 using IServices;
 using Presenters.Views;
 using System;
@@ -59,24 +60,28 @@ namespace Presenters.Presenter
             _services.GetData().RemoveLastRow();
         }
 
-        public void DisplayChart(Chart chart1, DataGridView dataGrid)
+        public void DisplayChart(Chart chart1,int X, int Y)
         {
             chart1.Series[0].Points.Clear();
             Axis xAxis = new Axis();
-            xAxis.Title = dataGrid.Columns[0].HeaderText;
+            xAxis.Title = _services.GetData().GetTable().ColumnsName[X];
             Axis yAxis = new Axis();
-            yAxis.Title = dataGrid.Columns[1].HeaderText;
+            yAxis.Title = _services.GetData().GetTable().ColumnsName[Y];
             chart1.ChartAreas[0].AxisX = xAxis;
             chart1.ChartAreas[0].AxisY = yAxis;
-            //chart1.ChartAreas[0].AxisX = xAxis;
-            //chart1.ChartAreas[0].AxisY = yAxis;
-            for (int i = 0; i < dataGrid.Rows.Count; i++)
+            foreach (List<string> row in _services.GetData().GetTable().DataColumn)
             {
-                double x = Convert.ToDouble(dataGrid.Rows[i].Cells[0].Value);
-                double y = Convert.ToDouble(dataGrid.Rows[i].Cells[1].Value);
+                double x = Convert.ToDouble(row.ElementAt(X));
+                double y = Convert.ToDouble(row.ElementAt(Y));
                 chart1.Series[0].Points.AddXY(x, y);
 
             }
         }
+
+        public void SetComboBox(ComboBox comboBox)
+        {
+            foreach(string names in _services.GetData().GetTable().ColumnsName) { comboBox.Items.Add(names); }
+        }
+
     }
 }

@@ -37,19 +37,24 @@ namespace Presenters.Presenter
             {
                 if(fdb.ShowDialog() == DialogResult.OK)
                 {
-                    string _path = fdb.FileName;
-                    FileInfo fileInfo = new FileInfo(_path);
-                    if (fileInfo.Extension == ".csv" && _services == null) 
-                    {
-                        _services = new CSVFileAccessService();   
-                    }
-                    else if(fileInfo.Extension == ".csv" && _services != null)
-                    {
-                        _services = new CSVFileAccessService(_services.GetData());
-                    }
-                    return _path;
+                        string _path = fdb.FileName;
+                        //string _path = fdb.FileName;
+                        FileInfo fileInfo = new FileInfo(_path);
+                        if (fileInfo.Extension == ".csv" && _services == null)
+                        {
+                            _services = new CSVFileAccessService();
+                        }
+                        else if (fileInfo.Extension == ".csv" && _services != null)
+                        {
+                            _services = new CSVFileAccessService(_services.GetData());
+                        }
+                        return _path;
                 }
-                return null;
+                else
+                {
+                    return null;
+                }
+               
             }
         }
     }
