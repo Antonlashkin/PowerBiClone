@@ -40,15 +40,24 @@ namespace Presenters.Presenter
                         string _path = fdb.FileName;
                         //string _path = fdb.FileName;
                         FileInfo fileInfo = new FileInfo(_path);
-                        if (fileInfo.Extension == ".csv" && _services == null)
-                        {
-                            _services = new CSVFileAccessService();
-                        }
-                        else if (fileInfo.Extension == ".csv" && _services != null)
-                        {
-                            _services = new CSVFileAccessService(_services.GetData());
-                        }
-                        return _path;
+                    if (fileInfo.Extension == ".csv" && _services == null)
+                    {
+                        _services = new CSVFileAccessService();
+                    }
+                    else if (fileInfo.Extension == ".csv" && _services != null)
+                    {
+                        _services = new CSVFileAccessService(_services.GetData());
+                    }
+                    else if (fileInfo.Extension == ".txt" && _services == null)
+                    {
+                        _services = new TXTFileAccessService();
+                    }
+                    else if (fileInfo.Extension == ".txt" && _services != null)
+                    {
+                        _services = new TXTFileAccessService(_services.GetData());
+                    }
+
+                    return _path;
                 }
                 else
                 {
