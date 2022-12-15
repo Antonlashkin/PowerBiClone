@@ -20,6 +20,11 @@ namespace DataServices
             this.visual = visual;
         }
 
+        public int FindElement(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public IDataSourceRep GetData()
         {
             return null;
