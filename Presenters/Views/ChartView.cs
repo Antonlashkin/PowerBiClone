@@ -17,21 +17,84 @@ namespace Presenters.Views
 {
     public partial class ChartView : Form, IView
     {
-        private TableVisualizationView _parentForm;
+        private IView _parentForm;
         private VisualizationPresenter _presenter;
-        public ChartView(TableVisualizationView form)
+        public ChartView(IView form)
         {
             DataTransformService dvs = new DataTransformService(form.Data);
             _presenter = new VisualizationPresenter(this, dvs);
             _parentForm = form;
             InitializeComponent();
+            if (_parentForm is TableVisualizationView)
+                TableStripMenuItem.Enabled = false;
         }
 
         public IDataSourceRep Data => ((IView)_parentForm).Data;
 
         private void ChartView_Load(object sender, EventArgs e)
         {
-            _presenter.DisplayChart(this.chart1, _parentForm.dataTable);
+            //_presenter.DisplayChart(this.chart1);
+            _presenter.SetComboBox(XcolumnBox);
+            _presenter.SetComboBox(YColumnBox);
+          
+
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BackStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _parentForm.MakeVisible();
+            this.Hide();
+        }
+
+        public void HideView()
+        {
+            this.Hide();
+        }
+
+        public void MakeVisible()
+        {
+            this.Visible = true;
+        }
+
+        private void TableStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TableVisualizationView _tableView = new TableVisualizationView(this);
+            this.Hide();
+            _tableView.ShowDialog();
+        }
+
+        private void VisualMenuItem_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void XcolumnBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void UpdateStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int X = XcolumnBox.SelectedIndex;
+                int Y = YColumnBox.SelectedIndex;
+                _presenter.DisplayChart(this.chart1, X, Y);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Select columns, please");
+            }
         }
     }
 }

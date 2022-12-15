@@ -16,55 +16,69 @@ namespace Presenters.Views
 {
     public partial class TableVisualizationView : Form, IView
     {
-        private InitView _parentForm;
+        private IView _parentForm;
         private VisualizationPresenter _presenter;
        
-        public TableVisualizationView(InitView form)
+        public TableVisualizationView(IView form)
         {
             DataTransformService dvs = new DataTransformService(form.Data);
             _presenter = new VisualizationPresenter(this,dvs);
             _parentForm = form; 
             InitializeComponent();
-            showChar.Enabled = false;
+            if (_parentForm is ChartView)
+                VisualStripMenuItem2.Enabled = false;
         }
 
         public IDataSourceRep Data => _presenter.Service.GetData();
 
         private void TableVizualiztionView_Load(object sender, EventArgs e)
         {
-
+            _presenter.DisplayTable(dataTable);
         }
 
         private void dataTableView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
            
         }
-
-        private void close_Click(object sender, EventArgs e)
-        {
-            _parentForm.Visible = true;
-            this.Close();
-        }
-
         private void showTable_Click(object sender, EventArgs e)
         {
             _presenter.DisplayTable(dataTable);
-            showChar.Enabled = true;
 
             
-        }
-
-        private void showChart_Click(object sender, EventArgs e)
-        {
-            ChartView chartView = new ChartView(this);
-            chartView.ShowDialog();
-
         }
 
         private void removeRow_Click(object sender, EventArgs e)
         {
             _presenter.RemoveLastRow();
             _presenter.DisplayTable(dataTable);
+        }
+
+        private void BackStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _parentForm.MakeVisible();
+            this.Close();
+        }
+
+        private void VisualStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            ChartView chartView = new ChartView(this);
+            this.Hide();
+            chartView.ShowDialog();
+        }
+
+        public void HideView()
+        {
+            this.Hide();
+        }
+
+        public void MakeVisible()
+        {
+            this.Visible = true;
+        }
+
+        private void TableStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

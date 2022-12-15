@@ -11,5 +11,7 @@ namespace Presenters.Views
     public interface IView
     {
         IDataSourceRep Data { get;}
+        void HideView();
+        void MakeVisible();
     }
 }
