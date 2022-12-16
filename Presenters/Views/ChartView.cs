@@ -36,7 +36,10 @@ namespace Presenters.Views
             //_presenter.DisplayChart(this.chart1);
             _presenter.SetComboBox(XcolumnBox);
             _presenter.SetComboBox(YColumnBox);
-          
+            radioButton1.Enabled = false;
+            radioButton2.Enabled = false;
+            radioButton3.Enabled = false;
+
 
         }
 
@@ -104,11 +107,39 @@ namespace Presenters.Views
                 int X = XcolumnBox.SelectedIndex;
                 int Y = YColumnBox.SelectedIndex;
                 _presenter.DisplayChart(this.chart1, X, Y);
+                radioButton1.Enabled = true;
+                radioButton2.Enabled = true;
+                radioButton3.Enabled = true;
+                radioButton1.Checked = true;
             }
             catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("Select columns, please");
             }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            int X = XcolumnBox.SelectedIndex;
+            int Y = YColumnBox.SelectedIndex;
+            chart1.Series[0].ChartType = SeriesChartType.Line;
+            _presenter.DisplayChart(this.chart1, X, Y);
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            int X = XcolumnBox.SelectedIndex;
+            int Y = YColumnBox.SelectedIndex;
+            chart1.Series[0].ChartType = SeriesChartType.Bar;
+            _presenter.DisplayChart(this.chart1, X, Y);
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            int X = XcolumnBox.SelectedIndex;
+            int Y = YColumnBox.SelectedIndex;
+            chart1.Series[0].ChartType = SeriesChartType.Pie;
+            _presenter.DisplayChart(this.chart1, X, Y);
         }
     }
 }
