@@ -33,7 +33,7 @@ namespace Presenters.Views
 
         }
 
-        private void ReadFile_Click(object sender, EventArgs e)
+        /*private void ReadFile_Click(object sender, EventArgs e)
         {
             presenter.Service.reader(textBox1.Text);
             //ToTableVizualization.Enabled = true;
@@ -44,7 +44,7 @@ namespace Presenters.Views
         {
             textBox1.Text = presenter.SelectFile().ToString();
             //loadFile.Enabled = true;
-        }
+        }*/
 
         private void toTableVizualization_Click(object sender, EventArgs e)
         {
@@ -60,7 +60,7 @@ namespace Presenters.Views
 
         }       
         private void FileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {   
 
         }
 
@@ -68,8 +68,8 @@ namespace Presenters.Views
         {
             try
             {
-                textBox1.Text = presenter.SelectFile().ToString();
-                presenter.Service.reader(textBox1.Text);
+                string file = presenter.SelectFile("txt files (*.txt)|*.txt|csv files (*.csv)|*.csv").ToString();
+                presenter.Service.reader(file);
                 TableStripMenuItem.Enabled = true;
                 VisualStripMenuItem.Enabled = true;
                 SaveToolStripMenuItem.Enabled = true;
@@ -84,7 +84,7 @@ namespace Presenters.Views
         {
             try
             {
-                string file = presenter.SaveFile().ToString();
+                string file = presenter.SaveFile("txt files (*.txt)|*.txt|csv files (*.csv)|*.csv").ToString();
                 presenter.Service.writer(file);
                 MessageBox.Show("The file has been saved");
             }
@@ -130,6 +130,24 @@ namespace Presenters.Views
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CreateProjectButton_Click(object sender, EventArgs e)
+        {
+            ProjectView projectView = new ProjectView();
+            this.Hide();
+            projectView.ShowDialog();
+        }
+
+        private void OpenProjectButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

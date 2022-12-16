@@ -1,29 +1,29 @@
-﻿using Presenters.Views;
+﻿using DataCacheStorage;
+using DataServices;
+using IServices;
+using Presenters.Views;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IServices;
 using System.Windows.Forms;
-using System.IO;
-using DataServices;
-using DataCacheStorage;
 
 namespace Presenters.Presenter
 {
-    public class InitPresenter : ViewPresenter<IView>
+    internal class ProjectPresenter : ViewPresenter<IView>
     {
         private IDataSourceAccessService _services;
         public override void InitView()
         {
 
         }
-        public InitPresenter(IView view) : base(view)
+        public ProjectPresenter(IView view) : base(view)
         {
         }
 
-        public IDataSourceAccessService Service { get { return _services; }  set { _services = value; } }
+        public IDataSourceAccessService Service { get { return _services; } set { _services = value; } }
 
         public void ReadFile(string _fileName)
         {
@@ -32,10 +32,10 @@ namespace Presenters.Presenter
         }
         public string SaveFile(string filter)
         {
-            using(SaveFileDialog saveFileDialog = new SaveFileDialog())
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.Filter = filter;
-                if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string _path = saveFileDialog.FileName;
                     FileInfo fileInfo = new FileInfo(_path);
@@ -63,16 +63,16 @@ namespace Presenters.Presenter
                 }
             }
         }
-        public string SelectFile(string filter)
+        public FileInfo SelectFile(string filter)
         {
-            using(OpenFileDialog fdb = new OpenFileDialog())
+            using (OpenFileDialog fdb = new OpenFileDialog())
             {
                 fdb.Filter = filter;
                 if (fdb.ShowDialog() == DialogResult.OK)
                 {
-                        string _path = fdb.FileName;
-                        //string _path = fdb.FileName;
-                        FileInfo fileInfo = new FileInfo(_path);
+                    string _path = fdb.FileName;
+                    //string _path = fdb.FileName;
+                    FileInfo fileInfo = new FileInfo(_path);
                     if (fileInfo.Extension == ".csv" && _services == null)
                     {
                         _services = new CSVFileAccessService();
@@ -90,13 +90,13 @@ namespace Presenters.Presenter
                         _services = new TXTFileAccessService(_services.GetData());
                     }
 
-                    return _path;
+                    return fileInfo;
                 }
                 else
                 {
                     return null;
                 }
-               
+
             }
         }
     }

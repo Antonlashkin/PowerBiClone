@@ -23,7 +23,7 @@ namespace Presenters.Views
         {
             DataTransformService dvs = new DataTransformService(form.Data);
             _presenter = new VisualizationPresenter(this,dvs);
-            _parentForm = form; 
+            _parentForm = form;
             InitializeComponent();
             if (_parentForm is ChartView)
                 VisualStripMenuItem2.Enabled = false;
