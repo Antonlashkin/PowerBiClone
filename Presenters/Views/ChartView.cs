@@ -85,6 +85,20 @@ namespace Presenters.Views
 
         private void UpdateStripMenuItem_Click(object sender, EventArgs e)
         {
+            /*try
+            {
+                int X = XcolumnBox.SelectedIndex;
+                int Y = YColumnBox.SelectedIndex;
+                _presenter.DisplayChart(this.chart1, X, Y);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Select columns, please");
+            }*/
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
             try
             {
                 int X = XcolumnBox.SelectedIndex;
