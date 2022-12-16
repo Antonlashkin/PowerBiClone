@@ -30,12 +30,45 @@ namespace Presenters.Presenter
             _services.reader(_fileName);
             DataCache.getInstance().AddTable(_services.GetData());
         }
-
+        public string SaveFile()
+        {
+            using(SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "txt files (*.txt)|*.txt|csv files (*.csv)|*.csv";
+                if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string _path = saveFileDialog.FileName;
+                    FileInfo fileInfo = new FileInfo(_path);
+                    if (fileInfo.Extension == ".csv" && _services == null)
+                    {
+                        _services = new CSVFileAccessService();
+                    }
+                    else if (fileInfo.Extension == ".csv" && _services != null)
+                    {
+                        _services = new CSVFileAccessService(_services.GetData());
+                    }
+                    else if (fileInfo.Extension == ".txt" && _services == null)
+                    {
+                        _services = new TXTFileAccessService();
+                    }
+                    else if (fileInfo.Extension == ".txt" && _services != null)
+                    {
+                        _services = new TXTFileAccessService(_services.GetData());
+                    }
+                    return _path;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
         public string SelectFile()
         {
             using(OpenFileDialog fdb = new OpenFileDialog())
             {
-                if(fdb.ShowDialog() == DialogResult.OK)
+                fdb.Filter = "txt files (*.txt)|*.txt|csv files (*.csv)|*.csv";
+                if (fdb.ShowDialog() == DialogResult.OK)
                 {
                         string _path = fdb.FileName;
                         //string _path = fdb.FileName;

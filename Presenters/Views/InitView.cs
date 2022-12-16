@@ -84,7 +84,8 @@ namespace Presenters.Views
         {
             try
             {
-                presenter.Service.writer(presenter.SelectFile());
+                string file = presenter.SaveFile().ToString();
+                presenter.Service.writer(file);
                 MessageBox.Show("The file has been saved");
             }
             catch (NullReferenceException)
