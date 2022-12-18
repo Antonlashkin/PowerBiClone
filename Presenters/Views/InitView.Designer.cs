@@ -38,7 +38,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TableStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.VisualStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxFileLoaded = new System.Windows.Forms.ListBox();
             this.AddingFileButton = new System.Windows.Forms.Button();
@@ -50,12 +49,11 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileToolStripMenuItem,
-            this.TableStripMenuItem,
-            this.VisualStripMenuItem});
+            this.TableStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -124,13 +122,6 @@
             this.TableStripMenuItem.Text = "Table";
             this.TableStripMenuItem.Click += new System.EventHandler(this.TableStripMenuItem_Click);
             // 
-            // VisualStripMenuItem
-            // 
-            this.VisualStripMenuItem.Name = "VisualStripMenuItem";
-            this.VisualStripMenuItem.Size = new System.Drawing.Size(107, 26);
-            this.VisualStripMenuItem.Text = "Visualization";
-            this.VisualStripMenuItem.Click += new System.EventHandler(this.VisualStripMenuItem_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -196,7 +187,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TableStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem VisualStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBoxFileLoaded;
         private System.Windows.Forms.Button AddingFileButton;

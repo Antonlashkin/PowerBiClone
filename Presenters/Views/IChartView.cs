@@ -11,6 +11,8 @@ namespace Presenters.Views
     {
         ComboBox ComboBoxX { get;}
         ComboBox ComboBoxY { get;}
+        void HideView();
+        void MakeVisible();
 
     }
 }

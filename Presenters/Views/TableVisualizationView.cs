@@ -18,6 +18,7 @@ namespace Presenters.Views
     public partial class TableVisualizationView : Form, ITableView
     {
         private IInitView _parentForm;
+        private IChartView _nextForm;
         private VisualizationPresenter _presenter;
        
         public TableVisualizationView(IInitView form)
@@ -28,6 +29,9 @@ namespace Presenters.Views
             InitializeComponent();
             if (_parentForm is ChartView)
                 VisualStripMenuItem2.Enabled = false;
+        }
+        public TableVisualizationView(TableVisualizationView tvv)
+        {
         }
 
         public IDataCache Data => _presenter.Service.GetData();
@@ -64,9 +68,18 @@ namespace Presenters.Views
 
         private void VisualStripMenuItem2_Click(object sender, EventArgs e)
         {
-            ChartView chartView = new ChartView(_parentForm);
-            this.Hide();
-            chartView.ShowDialog();
+            if (_nextForm == null)
+            {
+                ChartView chartView = new ChartView(this);
+                _nextForm = chartView;
+                this.Hide();
+                chartView.ShowDialog();
+            }
+            else
+            {
+                this.Hide();
+                _nextForm.MakeVisible();
+            }
         }
 
         public void HideView()

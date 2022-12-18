@@ -40,13 +40,14 @@ namespace Presenters.Presenter
             {
                 view.DataGridView.Columns.RemoveAt(0);
             }
+            int j = 0;
             foreach (DataTable table in _services.GetData().GetAllTables())
             {
-                int j = 0;
                 foreach (string name in table.ColumnsName)
                 {
                     view.DataGridView.Columns.Add(name, name);
                 }
+              
                 if(table.DataColumn.Count > view.DataGridView.RowCount)
                 {
                     int diff = table.DataColumn.Count - view.DataGridView.RowCount;
@@ -56,13 +57,15 @@ namespace Presenters.Presenter
                 foreach (List<string> strings in table.DataColumn)
                 {
                     int k = 0;
-                    for (; j < j + strings.Count; j++)
+                    for (int l = j; l < j + strings.Count; l++)
                     {
-                        view.DataGridView.Rows[i].Cells[j].Value = strings[k++];
+                        view.DataGridView.Rows[i].Cells[l].Value = strings[k];
+                        k++;
 
                     }
                     i++;
                 }
+                j = j + table.ColumnsName.Count();
             }
         }
 

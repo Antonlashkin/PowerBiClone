@@ -17,9 +17,9 @@ namespace Presenters.Views
 {
     public partial class ChartView : Form, IChartView
     {
-        private IInitView _parentForm;
+        private ITableView _parentForm;
         private ChartPresenter _presenter;
-        public ChartView(IInitView form)
+        public ChartView(ITableView form)
         {
             DataTransformService dvs = new DataTransformService();
             _presenter = new ChartPresenter(dvs,this);
@@ -28,7 +28,6 @@ namespace Presenters.Views
             if (_parentForm is TableVisualizationView)
                 TableStripMenuItem.Enabled = false;
         }
-
         public ComboBox ComboBoxX => XcolumnBox;
 
         public ComboBox ComboBoxY => YColumnBox;
@@ -68,9 +67,9 @@ namespace Presenters.Views
 
         private void TableStripMenuItem_Click(object sender, EventArgs e)
         {
-            TableVisualizationView _tableView = new TableVisualizationView(_parentForm);
+           // TableVisualizationView _tableView = new TableVisualizationView(_parentForm);
             this.Hide();
-            _tableView.ShowDialog();
+            _parentForm.MakeVisible();
         }
 
         private void VisualMenuItem_Click(object sender, EventArgs e)

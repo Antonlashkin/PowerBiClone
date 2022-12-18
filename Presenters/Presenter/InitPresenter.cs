@@ -38,22 +38,22 @@ namespace Presenters.Presenter
                 {
                     string _path = saveFileDialog.FileName;
                     FileInfo fileInfo = new FileInfo(_path);
-                    if (fileInfo.Extension == ".csv" && _services == null)
+                    if (fileInfo.Extension == ".csv")
                     {
                         _services = new CSVFileAccessService();
                     }
-                    else if (fileInfo.Extension == ".csv" && _services != null)
-                    {
-                        _services = new CSVFileAccessService(_services.GetData());
-                    }
-                    else if (fileInfo.Extension == ".txt" && _services == null)
+                   // else if (fileInfo.Extension == ".csv" && _services != null)
+                   // {
+                    //    _services = new CSVFileAccessService(_services.GetData());
+                   // }
+                    else if (fileInfo.Extension == ".txt")
                     {
                         _services = new TXTFileAccessService();
                     }
-                    else if (fileInfo.Extension == ".txt" && _services != null)
-                    {
-                        _services = new TXTFileAccessService(_services.GetData());
-                    }
+                   // else if (fileInfo.Extension == ".txt" && _services != null)
+                   // {
+                   //     _services = new TXTFileAccessService(_services.GetData());
+                   // }
                     return _path;
                 }
                 else
@@ -72,21 +72,13 @@ namespace Presenters.Presenter
                         string _path = fdb.FileName;
                         //string _path = fdb.FileName;
                         FileInfo fileInfo = new FileInfo(_path);
-                    if (fileInfo.Extension == ".csv" && _services == null)
+                    if (fileInfo.Extension == ".csv")
                     {
                         _services = new CSVFileAccessService();
                     }
-                    else if (fileInfo.Extension == ".csv" && _services != null)
-                    {
-                        _services = new CSVFileAccessService(_services.GetData());
-                    }
-                    else if (fileInfo.Extension == ".txt" && _services == null)
+                    else if (fileInfo.Extension == ".txt")
                     {
                         _services = new TXTFileAccessService();
-                    }
-                    else if (fileInfo.Extension == ".txt" && _services != null)
-                    {
-                        _services = new TXTFileAccessService(_services.GetData());
                     }
                     view.FileNames.Items.Add(_path);
                     return _path;

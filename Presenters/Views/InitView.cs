@@ -24,7 +24,6 @@ namespace Presenters.Views
             InitializeComponent();
             SaveToolStripMenuItem.Enabled = false;
             TableStripMenuItem.Enabled = false;
-            VisualStripMenuItem.Enabled = false;
         }
 
         public IDataSourceRep Data { get => presenter.Service.GetData(); }
@@ -69,7 +68,6 @@ namespace Presenters.Views
                 string file = presenter.SelectFile("txt files (*.txt)|*.txt|csv files (*.csv)|*.csv").ToString();
                 presenter.Service.reader(file);
                 TableStripMenuItem.Enabled = true;
-                VisualStripMenuItem.Enabled = true;
                 SaveToolStripMenuItem.Enabled = true;
             }
             catch(NullReferenceException)
@@ -102,14 +100,6 @@ namespace Presenters.Views
             this.Hide();
             tvzv.ShowDialog();
         }
-
-        private void VisualStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChartView chartView = new ChartView(this);
-            this.Hide();
-            chartView.ShowDialog();
-        }
-
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -148,7 +138,6 @@ namespace Presenters.Views
                 string file = presenter.SelectFile("txt files (*.txt)|*.txt|csv files (*.csv)|*.csv").ToString();
                 presenter.Service.reader(file);
                 TableStripMenuItem.Enabled = true;
-                VisualStripMenuItem.Enabled = true;
                 SaveToolStripMenuItem.Enabled = true;
             }
             catch (NullReferenceException)
