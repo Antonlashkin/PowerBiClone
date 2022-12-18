@@ -9,22 +9,24 @@ using IDataSourcePerositories;
 
 namespace DataCacheStorage
 {
+    [Serializable]
     public  class DataCache : IDataCache
     {
-        private  static List<DataTable> _entitiesList;
-        private static DataCache _cache;
+        private List<DataTable> _entitiesList;
+        private static DataCache dataCache;
 
-        private DataCache()
+       private DataCache()
         {
             _entitiesList = new List<DataTable>();
         }
-        public static DataCache getInstance()
+
+        public static DataCache GetInstance() 
         {
-            if (_cache == null)
-                _cache = new DataCache();
-            return _cache;
-
-
+            if(dataCache == null) {
+                dataCache = new DataCache();
+            }
+            return dataCache;
+            
         }
 
         public List<DataTable> EntitiesList { get { return _entitiesList; } set { _entitiesList = value; } }
@@ -34,6 +36,10 @@ namespace DataCacheStorage
             _entitiesList.Add(_bufferData.GetTable());
         }
 
+        public void Clear()
+        {
+            _entitiesList.Clear();
+        }
 
 
         public override string ToString()
@@ -46,5 +52,14 @@ namespace DataCacheStorage
             return base.GetHashCode() + _entitiesList.GetHashCode();
         }
 
+        public DataTable GetTable(int index)
+        {
+            return _entitiesList.ElementAt(index);
+        }
+
+        public List<DataTable> GetAllTables()
+        {
+            return _entitiesList;
+        }
     }
 }

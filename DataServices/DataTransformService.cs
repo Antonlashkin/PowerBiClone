@@ -9,23 +9,21 @@ using IDataSourcePerositories;
 using DataServices;
 using DataSourceRepositories;
 using DataCacheStorage;
+using IDataCacheStorage;
 
 namespace DataServices
 {
     public class DataTransformService : IBasicService
     {
-        private IDataSourceRep _repository;
+        private IDataCache dataCache;
 
-        public DataTransformService(IDataSourceRep repo) {
-            _repository = repo;
-        }
         public DataTransformService()
         {
-            _repository = new DataSourceRepo();
+            dataCache = DataCache.GetInstance();
         }
-        public IDataSourceRep GetData()
+        public IDataCache GetData()
         {
-            return _repository;
+            return dataCache;
         }
     }
 }

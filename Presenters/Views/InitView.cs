@@ -11,10 +11,11 @@ using System.Windows.Forms;
 using IServices;
 using DataServices;
 using IDataSourcePerositories;
+using IDataCacheStorage;
 
 namespace Presenters.Views
 {
-    public partial class InitView : Form, IView
+    public partial class InitView : Form, IInitView
     {
         private InitPresenter presenter;
         public InitView()
@@ -27,6 +28,9 @@ namespace Presenters.Views
         }
 
         public IDataSourceRep Data { get => presenter.Service.GetData(); }
+        IDataCache IInitView.Data { get => presenter.Service.GetAllData(); set => throw new NotImplementedException(); }
+
+        public ListBox FileNames => listBoxFileLoaded;
 
         private void InitView_Load(object sender, EventArgs e)
         {
@@ -50,15 +54,9 @@ namespace Presenters.Views
         {
             TableVisualizationView tvzv = new TableVisualizationView(this);
             this.Hide();
-            tvzv.ShowDialog();
-
-           
+            tvzv.ShowDialog();   
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }       
+        
         private void FileToolStripMenuItem_Click(object sender, EventArgs e)
         {   
 
@@ -137,17 +135,26 @@ namespace Presenters.Views
         {
 
         }
-
-        private void CreateProjectButton_Click(object sender, EventArgs e)
+     
+        private void listBoxFileLoaded_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ProjectView projectView = new ProjectView();
-            this.Hide();
-            projectView.ShowDialog();
+
         }
 
-        private void OpenProjectButton_Click(object sender, EventArgs e)
+        private void AddingFileButton_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                string file = presenter.SelectFile("txt files (*.txt)|*.txt|csv files (*.csv)|*.csv").ToString();
+                presenter.Service.reader(file);
+                TableStripMenuItem.Enabled = true;
+                VisualStripMenuItem.Enabled = true;
+                SaveToolStripMenuItem.Enabled = true;
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("File not selected");
+            }
         }
     }
 }

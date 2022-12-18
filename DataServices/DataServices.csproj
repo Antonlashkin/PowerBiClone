@@ -79,6 +79,10 @@
       <Project>{1d30f923-4aec-4613-910a-04bb85874128}</Project>
       <Name>Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IDataCacheStorage\IDataCacheStorage.csproj">
+      <Project>{a24448d8-e424-489f-ab7a-a7d429d4a152}</Project>
+      <Name>IDataCacheStorage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IDataSourcePerositories\IDataSourcePerositories.csproj">
       <Project>{0146182a-5ef3-4609-9add-2a20cdcde5db}</Project>
       <Name>IDataSourcePerositories</Name>

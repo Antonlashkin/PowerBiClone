@@ -10,6 +10,8 @@ using CsvHelper;
 using IDataSourcePerositories;
 using IServices;
 using DataSourceRepositories;
+using IDataCacheStorage;
+using DataCacheStorage;
 
 namespace DataServices
 {
@@ -47,6 +49,7 @@ namespace DataServices
                     }
                     data.GetTable().ColumnsName = values;
                     data.GetTable().DataColumn = readData;
+                    DataCache.GetInstance().AddTable(data);
                 }
            
                 return true;
@@ -94,5 +97,9 @@ namespace DataServices
             return q.Separator;
         }
 
+        public IDataCache GetAllData()
+        {
+            return DataCache.GetInstance();
+        }
     }
 }

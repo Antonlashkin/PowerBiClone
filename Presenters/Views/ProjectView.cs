@@ -13,16 +13,16 @@ using System.Windows.Forms;
 
 namespace Presenters.Views
 {
-    public partial class ProjectView : Form, IView
+    public partial class ProjectView : Form
     {
         //TODO array of files
         //
-        private ProjectPresenter presenter;
+        private ChartPresenter presenter;
         private IDataSourceAccessService _services;
-        public IDataSourceRep Data { get => presenter.Service.GetData(); }
+       // public IDataSourceRep Data { get => presenter.Service.GetData(); }
         public ProjectView()
         {
-            presenter = new ProjectPresenter(this);
+         //   presenter = new ChartPresenter(this);
             InitializeComponent();
         }
         public void HideView()
@@ -38,8 +38,8 @@ namespace Presenters.Views
         {
             try
             {
-                System.IO.FileInfo file = presenter.SelectFile("txt files (*.txt)|*.txt|csv files (*.csv)|*.csv");
-                listBox1.Items.Add(file.Name);
+               // System.IO.FileInfo file = presenter.SelectFile("txt files (*.txt)|*.txt|csv files (*.csv)|*.csv");
+               // listBox1.Items.Add(file.Name);
 
                 //presenter.Service.reader(file);
             }

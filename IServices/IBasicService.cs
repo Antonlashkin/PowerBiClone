@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Entities;
 using IDataSourcePerositories;
+using IDataCacheStorage;
 
 namespace IServices
 {
     public interface IBasicService
     {
-        IDataSourceRep GetData();
+       IDataCache GetData();
     }
 }

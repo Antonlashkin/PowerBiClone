@@ -1,4 +1,5 @@
 ﻿using DataServices;
+using IDataCacheStorage;
 using IDataSourcePerositories;
 using IServices;
 using Presenters.Presenter;
@@ -14,14 +15,14 @@ using System.Windows.Forms;
 
 namespace Presenters.Views
 {
-    public partial class TableVisualizationView : Form, IView
+    public partial class TableVisualizationView : Form, ITableView
     {
-        private IView _parentForm;
+        private IInitView _parentForm;
         private VisualizationPresenter _presenter;
        
-        public TableVisualizationView(IView form)
+        public TableVisualizationView(IInitView form)
         {
-            DataTransformService dvs = new DataTransformService(form.Data);
+            DataTransformService dvs = new DataTransformService();
             _presenter = new VisualizationPresenter(this,dvs);
             _parentForm = form;
             InitializeComponent();
@@ -29,11 +30,13 @@ namespace Presenters.Views
                 VisualStripMenuItem2.Enabled = false;
         }
 
-        public IDataSourceRep Data => _presenter.Service.GetData();
+        public IDataCache Data => _presenter.Service.GetData();
+
+        public DataGridView DataGridView { get => dataTable; }
 
         private void TableVizualiztionView_Load(object sender, EventArgs e)
         {
-            _presenter.DisplayTable(dataTable);
+            _presenter.DisplayTable();
         }
 
         private void dataTableView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -42,15 +45,15 @@ namespace Presenters.Views
         }
         private void showTable_Click(object sender, EventArgs e)
         {
-            _presenter.DisplayTable(dataTable);
+            _presenter.DisplayTable();
 
             
         }
 
         private void removeRow_Click(object sender, EventArgs e)
         {
-            _presenter.RemoveLastRow();
-            _presenter.DisplayTable(dataTable);
+           // _presenter.RemoveLastRow();
+            _presenter.DisplayTable();
         }
 
         private void BackStripMenuItem_Click(object sender, EventArgs e)
@@ -61,7 +64,7 @@ namespace Presenters.Views
 
         private void VisualStripMenuItem2_Click(object sender, EventArgs e)
         {
-            ChartView chartView = new ChartView(this);
+            ChartView chartView = new ChartView(_parentForm);
             this.Hide();
             chartView.ShowDialog();
         }

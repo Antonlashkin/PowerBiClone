@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Presenter\InitPresenter.cs" />
-    <Compile Include="Presenter\ProjectPresenter.cs" />
+    <Compile Include="Presenter\ChartPresenter.cs" />
     <Compile Include="Presenter\ViewPresenter.cs" />
     <Compile Include="Presenter\VisualizationPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,13 +66,15 @@
     <Compile Include="Views\ChartView.Designer.cs">
       <DependentUpon>ChartView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\IChartView.cs" />
     <Compile Include="Views\InitView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\InitView.Designer.cs">
       <DependentUpon>InitView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\IView.cs" />
+    <Compile Include="Views\IInitView.cs" />
+    <Compile Include="Views\ITableView.cs" />
     <Compile Include="Views\ProjectView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +100,10 @@
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{1d30f923-4aec-4613-910a-04bb85874128}</Project>
       <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDataCacheStorage\IDataCacheStorage.csproj">
+      <Project>{a24448d8-e424-489f-ab7a-a7d429d4a152}</Project>
+      <Name>IDataCacheStorage</Name>
     </ProjectReference>
     <ProjectReference Include="..\IDataSourcePerositories\IDataSourcePerositories.csproj">
       <Project>{0146182A-5EF3-4609-9ADD-2A20CDCDE5DB}</Project>

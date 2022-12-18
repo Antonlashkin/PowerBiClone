@@ -15,27 +15,29 @@ using Presenters.Views;
 
 namespace Presenters.Views
 {
-    public partial class ChartView : Form, IView
+    public partial class ChartView : Form, IChartView
     {
-        private IView _parentForm;
-        private VisualizationPresenter _presenter;
-        public ChartView(IView form)
+        private IInitView _parentForm;
+        private ChartPresenter _presenter;
+        public ChartView(IInitView form)
         {
-            DataTransformService dvs = new DataTransformService(form.Data);
-            _presenter = new VisualizationPresenter(this, dvs);
+            DataTransformService dvs = new DataTransformService();
+            _presenter = new ChartPresenter(dvs,this);
             _parentForm = form;
             InitializeComponent();
             if (_parentForm is TableVisualizationView)
                 TableStripMenuItem.Enabled = false;
         }
 
-        public IDataSourceRep Data => ((IView)_parentForm).Data;
+        public ComboBox ComboBoxX => XcolumnBox;
+
+        public ComboBox ComboBoxY => YColumnBox;
 
         private void ChartView_Load(object sender, EventArgs e)
         {
             //_presenter.DisplayChart(this.chart1);
-            _presenter.SetComboBox(XcolumnBox);
-            _presenter.SetComboBox(YColumnBox);
+            _presenter.SetComboBoxX();
+            _presenter.SetComboBoxY();
             radioButton1.Enabled = false;
             radioButton2.Enabled = false;
             radioButton3.Enabled = false;
@@ -66,7 +68,7 @@ namespace Presenters.Views
 
         private void TableStripMenuItem_Click(object sender, EventArgs e)
         {
-            TableVisualizationView _tableView = new TableVisualizationView(this);
+            TableVisualizationView _tableView = new TableVisualizationView(_parentForm);
             this.Hide();
             _tableView.ShowDialog();
         }
@@ -106,7 +108,7 @@ namespace Presenters.Views
             {
                 int X = XcolumnBox.SelectedIndex;
                 int Y = YColumnBox.SelectedIndex;
-                _presenter.DisplayChart(this.chart1, X, Y);
+               // _presenter.DisplayChart(this.chart1, X, Y);
                 radioButton1.Enabled = true;
                 radioButton2.Enabled = true;
                 radioButton3.Enabled = true;
@@ -123,7 +125,7 @@ namespace Presenters.Views
             int X = XcolumnBox.SelectedIndex;
             int Y = YColumnBox.SelectedIndex;
             chart1.Series[0].ChartType = SeriesChartType.Line;
-            _presenter.DisplayChart(this.chart1, X, Y);
+           // _presenter.DisplayChart(this.chart1, X, Y);
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -131,7 +133,7 @@ namespace Presenters.Views
             int X = XcolumnBox.SelectedIndex;
             int Y = YColumnBox.SelectedIndex;
             chart1.Series[0].ChartType = SeriesChartType.Bar;
-            _presenter.DisplayChart(this.chart1, X, Y);
+           // _presenter.DisplayChart(this.chart1, X, Y);
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -139,7 +141,7 @@ namespace Presenters.Views
             int X = XcolumnBox.SelectedIndex;
             int Y = YColumnBox.SelectedIndex;
             chart1.Series[0].ChartType = SeriesChartType.Pie;
-            _presenter.DisplayChart(this.chart1, X, Y);
+           // _presenter.DisplayChart(this.chart1, X, Y);
         }
     }
 }

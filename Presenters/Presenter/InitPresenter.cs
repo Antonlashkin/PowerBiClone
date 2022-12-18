@@ -12,14 +12,14 @@ using DataCacheStorage;
 
 namespace Presenters.Presenter
 {
-    public class InitPresenter : ViewPresenter<IView>
+    public class InitPresenter : ViewPresenter<IInitView>
     {
         private IDataSourceAccessService _services;
         public override void InitView()
         {
-
+            view.Data = _services.GetAllData();
         }
-        public InitPresenter(IView view) : base(view)
+        public InitPresenter(IInitView view) : base(view)
         {
         }
 
@@ -28,7 +28,6 @@ namespace Presenters.Presenter
         public void ReadFile(string _fileName)
         {
             _services.reader(_fileName);
-            DataCache.getInstance().AddTable(_services.GetData());
         }
         public string SaveFile(string filter)
         {
@@ -89,7 +88,7 @@ namespace Presenters.Presenter
                     {
                         _services = new TXTFileAccessService(_services.GetData());
                     }
-
+                    view.FileNames.Items.Add(_path);
                     return _path;
                 }
                 else

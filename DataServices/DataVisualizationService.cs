@@ -7,6 +7,7 @@ using IServices;
 using Entities;
 using IVisuals;
 using IDataSourcePerositories;
+using IDataCacheStorage;
 
 namespace DataServices
 {
@@ -14,6 +15,7 @@ namespace DataServices
     {
         // Передача данных для визуализации
         private IVisual visual;
+        private IDataCache dataCache;
 
         public DataVisualizationService(IVisual visual)
         {
@@ -25,9 +27,9 @@ namespace DataServices
             throw new NotImplementedException();
         }
 
-        public IDataSourceRep GetData()
+        public IDataCache GetData()
         {
-            return null;
+            return dataCache;
         }
 
     }

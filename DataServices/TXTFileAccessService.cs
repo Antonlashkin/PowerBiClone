@@ -10,6 +10,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IDataCacheStorage;
+using DataCacheStorage;
 
 namespace DataServices
 {
@@ -47,6 +49,7 @@ namespace DataServices
                 }
                 data.GetTable().ColumnsName = values;
                 data.GetTable().DataColumn = readData;
+                DataCache.GetInstance().AddTable(data);
             }
 
             return true;
@@ -93,5 +96,9 @@ namespace DataServices
             return q.Separator;
         }
 
+        public IDataCache GetAllData()
+        {
+            return DataCache.GetInstance();
+        }
     }
 }
