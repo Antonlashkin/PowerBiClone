@@ -21,6 +21,10 @@ namespace DataServices
         {
             this.visual = visual;
         }
+        public DataVisualizationService()
+        {
+           
+        }
 
         public int FindElement(string name)
         {

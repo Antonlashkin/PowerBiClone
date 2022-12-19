@@ -13,17 +13,35 @@ using IDataCacheStorage;
 
 namespace DataServices
 {
-    public class DataTransformService : IBasicService
+    public class DataTransformService : ITransformmationService
     {
         private IDataCache dataCache;
 
         public DataTransformService()
         {
-            dataCache = DataCache.GetInstance();
+            dataCache = new DataCache();
         }
+        public DataTransformService(IDataCache dataCache)
+        {
+            this.dataCache = dataCache;
+        }
+
         public IDataCache GetData()
         {
             return dataCache;
+        }
+
+        public void RemoveRow(int row)
+        {
+            foreach(DataTable table in dataCache.GetAllTables())
+            {
+                if (table.DataColumn.Count > row)
+                {
+                    table.DataColumn.RemoveAt(row);
+                }
+                else
+                    continue;
+            }
         }
     }
 }

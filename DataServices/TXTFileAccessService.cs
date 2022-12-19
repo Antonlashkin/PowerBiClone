@@ -18,14 +18,17 @@ namespace DataServices
     public class TXTFileAccessService : IDataSourceAccessService
     {
         private IDataSourceRep data;
+        private IDataCache cache;
 
-        public TXTFileAccessService(IDataSourceRep data)
+        public TXTFileAccessService(IDataCache cache)
         {
-            this.data = data;
+            data = new DataSourceRepo();
+            this.cache = cache;
         }
         public TXTFileAccessService()
         {
             data = new DataSourceRepo();
+            cache = new DataCache();
         }
 
         public IDataSourceRep GetData()
@@ -49,7 +52,7 @@ namespace DataServices
                 }
                 data.GetTable().ColumnsName = values;
                 data.GetTable().DataColumn = readData;
-                DataCache.GetInstance().AddTable(data);
+                cache.AddTable(data);
             }
 
             return true;
@@ -98,7 +101,7 @@ namespace DataServices
 
         public IDataCache GetAllData()
         {
-            return DataCache.GetInstance();
+            return cache;
         }
     }
 }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="IBasicService.cs" />
     <Compile Include="IDataSourceAccessService.cs" />
+    <Compile Include="ITransformmationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

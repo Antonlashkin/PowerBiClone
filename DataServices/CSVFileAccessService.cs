@@ -12,19 +12,23 @@ using IServices;
 using DataSourceRepositories;
 using IDataCacheStorage;
 using DataCacheStorage;
+using DocumentFormat.OpenXml.Drawing;
 
 namespace DataServices
 {
     public class CSVFileAccessService : IDataSourceAccessService
     {
         private IDataSourceRep data;
+        private IDataCache cache;
 
-        public CSVFileAccessService(IDataSourceRep data)
+        public CSVFileAccessService(IDataCache cache)
         {
-            this.data = data;
+            this.cache = cache;
+            data = new DataSourceRepo();
         }
         public CSVFileAccessService()
         {
+            cache = new DataCache();
             data = new DataSourceRepo();
         }
 
@@ -49,7 +53,7 @@ namespace DataServices
                     }
                     data.GetTable().ColumnsName = values;
                     data.GetTable().DataColumn = readData;
-                    DataCache.GetInstance().AddTable(data);
+                    cache.AddTable(data);
                 }
            
                 return true;
@@ -99,7 +103,7 @@ namespace DataServices
 
         public IDataCache GetAllData()
         {
-            return DataCache.GetInstance();
+            return cache;
         }
     }
 }
