@@ -13,20 +13,10 @@ namespace DataCacheStorage
     public  class DataCache : IDataCache
     {
         private List<DataTable> _entitiesList;
-        private static DataCache dataCache;
 
-       private DataCache()
+       public DataCache()
         {
             _entitiesList = new List<DataTable>();
-        }
-
-        public static DataCache GetInstance() 
-        {
-            if(dataCache == null) {
-                dataCache = new DataCache();
-            }
-            return dataCache;
-            
         }
 
         public List<DataTable> EntitiesList { get { return _entitiesList; } set { _entitiesList = value; } }
