@@ -19,17 +19,17 @@ namespace Presenters.Presenter
 
     public class VisualizationPresenter: ViewPresenter<ITableView>
     {
-        private IBasicService _services;
+        private ITransformmationService _services;
         public override void InitView()
         {
 
         }
-        public VisualizationPresenter(ITableView view,IBasicService service): base(view)
+        public VisualizationPresenter(ITableView view,ITransformmationService service): base(view)
         {
             _services = service;
         }
 
-        public IBasicService Service { get { return _services; } set { _services = value; } }
+        public ITransformmationService Service { get { return _services; } set { _services = value; } }
 
         public void DisplayTable()
         {
@@ -69,9 +69,11 @@ namespace Presenters.Presenter
             }
         }
 
-        public void RemoveRow(int k)
+        public void RemoveRow()
         {
-            _services.GetData();
+            int removingRow = view.DataGridView.CurrentRow.Index;
+            _services.RemoveRow(removingRow);
+            MessageBox.Show(removingRow.ToString());
         }
 
         public void DisplayChart(Chart chart1,int X, int Y)

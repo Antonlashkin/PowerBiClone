@@ -32,9 +32,9 @@
             this.showTable = new System.Windows.Forms.Button();
             this.removeRow = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.BackStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TableStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VisualStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.BackStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +69,7 @@
             this.removeRow.Name = "removeRow";
             this.removeRow.Size = new System.Drawing.Size(185, 49);
             this.removeRow.TabIndex = 4;
-            this.removeRow.Text = "Remove Last Row";
+            this.removeRow.Text = "Remove  Row";
             this.removeRow.UseVisualStyleBackColor = true;
             this.removeRow.Click += new System.EventHandler(this.removeRow_Click);
             // 
@@ -86,6 +86,13 @@
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // BackStripMenuItem
+            // 
+            this.BackStripMenuItem.Name = "BackStripMenuItem";
+            this.BackStripMenuItem.Size = new System.Drawing.Size(54, 24);
+            this.BackStripMenuItem.Text = "Back";
+            this.BackStripMenuItem.Click += new System.EventHandler(this.BackStripMenuItem_Click);
+            // 
             // TableStripMenuItem
             // 
             this.TableStripMenuItem.Name = "TableStripMenuItem";
@@ -99,13 +106,6 @@
             this.VisualStripMenuItem2.Size = new System.Drawing.Size(107, 24);
             this.VisualStripMenuItem2.Text = "Visualization";
             this.VisualStripMenuItem2.Click += new System.EventHandler(this.VisualStripMenuItem2_Click);
-            // 
-            // BackStripMenuItem
-            // 
-            this.BackStripMenuItem.Name = "BackStripMenuItem";
-            this.BackStripMenuItem.Size = new System.Drawing.Size(54, 24);
-            this.BackStripMenuItem.Text = "Back";
-            this.BackStripMenuItem.Click += new System.EventHandler(this.BackStripMenuItem_Click);
             // 
             // TableVisualizationView
             // 

@@ -21,7 +21,7 @@ namespace Presenters.Views
         private ChartPresenter _presenter;
         public ChartView(ITableView form)
         {
-            DataTransformService dvs = new DataTransformService();
+            DataVisualizationService dvs = new DataVisualizationService();
             _presenter = new ChartPresenter(dvs,this);
             _parentForm = form;
             InitializeComponent();

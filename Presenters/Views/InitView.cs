@@ -26,8 +26,8 @@ namespace Presenters.Views
             TableStripMenuItem.Enabled = false;
         }
 
-        public IDataSourceRep Data { get => presenter.Service.GetData(); }
-        IDataCache IInitView.Data { get => presenter.Service.GetAllData(); set => throw new NotImplementedException(); }
+        //public IDataSourceRep Data { get => presenter.Service.GetData(); }
+        IDataCache IInitView.Data { get => presenter.Cache; set => throw new NotImplementedException(); }
 
         public ListBox FileNames => listBoxFileLoaded;
 
@@ -96,9 +96,11 @@ namespace Presenters.Views
 
         private void TableStripMenuItem_Click(object sender, EventArgs e)
         {
-            TableVisualizationView tvzv = new TableVisualizationView(this);
-            this.Hide();
-            tvzv.ShowDialog();
+                TableVisualizationView tvzv = new TableVisualizationView(this);
+                this.Hide();
+                tvzv.ShowDialog();
+
+
         }
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {

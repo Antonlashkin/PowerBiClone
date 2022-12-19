@@ -9,21 +9,25 @@ using System.Windows.Forms;
 using System.IO;
 using DataServices;
 using DataCacheStorage;
+using IDataCacheStorage;
 
 namespace Presenters.Presenter
 {
     public class InitPresenter : ViewPresenter<IInitView>
     {
         private IDataSourceAccessService _services;
+        private IDataCache cache;
         public override void InitView()
         {
             view.Data = _services.GetAllData();
         }
         public InitPresenter(IInitView view) : base(view)
         {
+            cache= new DataCache();
         }
 
         public IDataSourceAccessService Service { get { return _services; }  set { _services = value; } }
+        public IDataCache Cache { get { return cache; } set { cache = value; } }
 
         public void ReadFile(string _fileName)
         {
@@ -40,20 +44,14 @@ namespace Presenters.Presenter
                     FileInfo fileInfo = new FileInfo(_path);
                     if (fileInfo.Extension == ".csv")
                     {
-                        _services = new CSVFileAccessService();
+                        _services = new CSVFileAccessService(cache);
                     }
-                   // else if (fileInfo.Extension == ".csv" && _services != null)
-                   // {
-                    //    _services = new CSVFileAccessService(_services.GetData());
-                   // }
+                  
                     else if (fileInfo.Extension == ".txt")
                     {
-                        _services = new TXTFileAccessService();
+                        _services = new TXTFileAccessService(cache);
                     }
-                   // else if (fileInfo.Extension == ".txt" && _services != null)
-                   // {
-                   //     _services = new TXTFileAccessService(_services.GetData());
-                   // }
+                  
                     return _path;
                 }
                 else
@@ -70,15 +68,14 @@ namespace Presenters.Presenter
                 if (fdb.ShowDialog() == DialogResult.OK)
                 {
                         string _path = fdb.FileName;
-                        //string _path = fdb.FileName;
                         FileInfo fileInfo = new FileInfo(_path);
                     if (fileInfo.Extension == ".csv")
                     {
-                        _services = new CSVFileAccessService();
+                        _services = new CSVFileAccessService(cache);
                     }
                     else if (fileInfo.Extension == ".txt")
                     {
-                        _services = new TXTFileAccessService();
+                        _services = new TXTFileAccessService(cache);
                     }
                     view.FileNames.Items.Add(_path);
                     return _path;

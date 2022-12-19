@@ -23,7 +23,7 @@ namespace Presenters.Views
        
         public TableVisualizationView(IInitView form)
         {
-            DataTransformService dvs = new DataTransformService();
+            DataTransformService dvs = new DataTransformService(form.Data);
             _presenter = new VisualizationPresenter(this,dvs);
             _parentForm = form;
             InitializeComponent();
@@ -56,7 +56,7 @@ namespace Presenters.Views
 
         private void removeRow_Click(object sender, EventArgs e)
         {
-           // _presenter.RemoveLastRow();
+            _presenter.RemoveRow();
             _presenter.DisplayTable();
         }
 
