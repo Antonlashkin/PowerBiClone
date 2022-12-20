@@ -11,7 +11,7 @@ using IDataCacheStorage;
 
 namespace DataServices
 {
-    public class DataVisualizationService : IBasicService
+    public class DataVisualizationService : IVisualizationService
     {
         // Передача данных для визуализации
         private IVisual visual;
@@ -21,9 +21,9 @@ namespace DataServices
         {
             this.visual = visual;
         }
-        public DataVisualizationService()
+        public DataVisualizationService(IDataCache data)
         {
-           
+            dataCache = data;
         }
 
         public int FindElement(string name)

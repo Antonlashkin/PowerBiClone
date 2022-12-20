@@ -15,17 +15,17 @@ namespace Presenters.Presenter
 {
     public class ChartPresenter : ViewPresenter<IChartView>
     {
-        private IBasicService _services;
+        private IVisualizationService _services;
         public override void InitView()
         {
 
         }
-        public ChartPresenter(IBasicService basicService, IChartView view) : base(view)
+        public ChartPresenter(IVisualizationService basicService, IChartView view) : base(view)
         {   
             _services = basicService;
         }
 
-        public IBasicService Service { get { return _services; } set { _services = value; } }
+        public IVisualizationService Service { get { return _services; } set { _services = value; } }
         public void SetComboBoxX()
         {
             foreach (DataTable data in _services.GetData().GetAllTables())

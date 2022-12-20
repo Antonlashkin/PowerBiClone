@@ -27,16 +27,11 @@ namespace Presenters.Views
             _presenter = new VisualizationPresenter(this,dvs);
             _parentForm = form;
             InitializeComponent();
-            if (_parentForm is ChartView)
-                VisualStripMenuItem2.Enabled = false;
         }
-        public TableVisualizationView(TableVisualizationView tvv)
-        {
-        }
-
-        public IDataCache Data => _presenter.Service.GetData();
 
         public DataGridView DataGridView { get => dataTable; }
+
+        public IDataCache Storage => _presenter.Service.GetData();
 
         private void TableVizualiztionView_Load(object sender, EventArgs e)
         {

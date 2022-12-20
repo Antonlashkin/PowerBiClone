@@ -52,7 +52,6 @@
             this.TableStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
@@ -69,7 +68,7 @@
             this.ExitToolStripMenuItem});
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
             this.FileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.FileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.FileToolStripMenuItem.Text = "&FIle";
             this.FileToolStripMenuItem.Click += new System.EventHandler(this.FileToolStripMenuItem_Click);
             // 
@@ -118,8 +117,8 @@
             // TableStripMenuItem
             // 
             this.TableStripMenuItem.Name = "TableStripMenuItem";
-            this.TableStripMenuItem.Size = new System.Drawing.Size(58, 26);
-            this.TableStripMenuItem.Text = "Table";
+            this.TableStripMenuItem.Size = new System.Drawing.Size(69, 24);
+            this.TableStripMenuItem.Text = "Project";
             this.TableStripMenuItem.Click += new System.EventHandler(this.TableStripMenuItem_Click);
             // 
             // label1

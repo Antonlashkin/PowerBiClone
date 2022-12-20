@@ -21,16 +21,16 @@ namespace Presenters.Views
         private ChartPresenter _presenter;
         public ChartView(ITableView form)
         {
-            DataVisualizationService dvs = new DataVisualizationService();
+            DataVisualizationService dvs = new DataVisualizationService(form.Storage);
             _presenter = new ChartPresenter(dvs,this);
             _parentForm = form;
             InitializeComponent();
-            if (_parentForm is TableVisualizationView)
-                TableStripMenuItem.Enabled = false;
         }
         public ComboBox ComboBoxX => XcolumnBox;
 
         public ComboBox ComboBoxY => YColumnBox;
+
+        public List<Chart> Charts => throw new NotImplementedException();
 
         private void ChartView_Load(object sender, EventArgs e)
         {
@@ -67,7 +67,6 @@ namespace Presenters.Views
 
         private void TableStripMenuItem_Click(object sender, EventArgs e)
         {
-           // TableVisualizationView _tableView = new TableVisualizationView(_parentForm);
             this.Hide();
             _parentForm.MakeVisible();
         }

@@ -52,8 +52,8 @@
   <ItemGroup>
     <Compile Include="Presenter\InitPresenter.cs" />
     <Compile Include="Presenter\ChartPresenter.cs" />
+    <Compile Include="Presenter\TransformationPresenter.cs" />
     <Compile Include="Presenter\ViewPresenter.cs" />
-    <Compile Include="Presenter\VisualizationPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

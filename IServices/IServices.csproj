@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBasicService.cs" />
     <Compile Include="IDataSourceAccessService.cs" />
     <Compile Include="ITransformmationService.cs" />
+    <Compile Include="IVisualizationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

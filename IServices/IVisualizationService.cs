@@ -9,7 +9,7 @@ using IDataCacheStorage;
 
 namespace IServices
 {
-    public interface IBasicService
+    public interface IVisualizationService
     {
        IDataCache GetData();
     }
