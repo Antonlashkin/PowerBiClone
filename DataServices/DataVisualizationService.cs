@@ -14,21 +14,38 @@ namespace DataServices
     public class DataVisualizationService : IVisualizationService
     {
         // Передача данных для визуализации
-        private IVisual visual;
         private IDataCache dataCache;
 
-        public DataVisualizationService(IVisual visual)
-        {
-            this.visual = visual;
-        }
         public DataVisualizationService(IDataCache data)
         {
             dataCache = data;
         }
 
-        public int FindElement(string name)
+        public void DeserialaizedCharts()
         {
             throw new NotImplementedException();
+        }
+
+        public List<double> GetColumn(int columnIndex)
+        {
+            foreach (DataTable table in dataCache.GetAllTables())
+            {
+                if (columnIndex >= table.ColumnsName.Count)
+                {
+                    columnIndex -= table.ColumnsName.Count;
+                    continue;
+                }
+                else
+                {
+                    List<double> outList = new List<double>();
+                    foreach (List<string> rows in table.DataColumn)
+                    {
+                        outList.Add(Convert.ToDouble(rows.ElementAt(columnIndex)));
+                    }
+                    return outList;
+                }
+            }
+            return null;
         }
 
         public IDataCache GetData()
@@ -36,5 +53,7 @@ namespace DataServices
             return dataCache;
         }
 
+       
+        
     }
 }
