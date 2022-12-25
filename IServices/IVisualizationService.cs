@@ -12,5 +12,6 @@ namespace IServices
     public interface IVisualizationService
     {
        IDataCache GetData();
+       List<double> GetColumn(int columnIndex);
     }
 }
