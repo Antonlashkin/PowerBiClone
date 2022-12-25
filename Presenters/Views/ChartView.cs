@@ -12,34 +12,51 @@ using Presenters.Presenter;
 using IDataSourcePerositories;
 using DataServices;
 using Presenters.Views;
+using System.Xml.Linq;
 
 namespace Presenters.Views
 {
     public partial class ChartView : Form, IChartView
     {
         private ITableView _parentForm;
+        private IInitView _initForm;
         private ChartPresenter _presenter;
+        private object CurrentObj;
+        private List<Chart> charts = new List<Chart>();
         public ChartView(ITableView form)
         {
             DataVisualizationService dvs = new DataVisualizationService(form.Storage);
             _presenter = new ChartPresenter(dvs,this);
             _parentForm = form;
+            _initForm = form.ReturnInitView();
             InitializeComponent();
         }
+
         public ComboBox ComboBoxX => XcolumnBox;
 
         public ComboBox ComboBoxY => YColumnBox;
 
-        public List<Chart> Charts => throw new NotImplementedException();
+//        public List <Chart> Charts =>charts;
+
+        public ListBox ChartsBox => chartListBox;
+
+        public List<Chart> Charts { get => charts; set => charts = value; }
+
+        private void MouseRightClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button.ToString() == "Right")
+                CurrentObj = null;
+        }
+
+        private void SelectChart(object sender, MouseEventArgs e)
+        {
+                CurrentObj = sender;  
+        }
 
         private void ChartView_Load(object sender, EventArgs e)
         {
-            //_presenter.DisplayChart(this.chart1);
             _presenter.SetComboBoxX();
             _presenter.SetComboBoxY();
-            radioButton1.Enabled = false;
-            radioButton2.Enabled = false;
-            radioButton3.Enabled = false;
 
 
         }
@@ -51,7 +68,7 @@ namespace Presenters.Views
 
         private void BackStripMenuItem_Click(object sender, EventArgs e)
         {
-            _parentForm.MakeVisible();
+            _initForm.MakeVisible();
             this.Hide();
         }
 
@@ -76,70 +93,104 @@ namespace Presenters.Views
           
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void XcolumnBox_SelectedIndexChanged(object sender, EventArgs e)
         {
           
         }
 
-        private void UpdateStripMenuItem_Click(object sender, EventArgs e)
-        {
-            /*try
-            {
-                int X = XcolumnBox.SelectedIndex;
-                int Y = YColumnBox.SelectedIndex;
-                _presenter.DisplayChart(this.chart1, X, Y);
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                MessageBox.Show("Select columns, please");
-            }*/
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void updateButton_Click(object sender, EventArgs e)
         {
             try
             {
-                int X = XcolumnBox.SelectedIndex;
-                int Y = YColumnBox.SelectedIndex;
-               // _presenter.DisplayChart(this.chart1, X, Y);
-                radioButton1.Enabled = true;
-                radioButton2.Enabled = true;
-                radioButton3.Enabled = true;
-                radioButton1.Checked = true;
+                if (radioPie.Checked)
+                    _presenter.DisplayPieChart();
+                else if (radioLine.Checked)
+                    _presenter.DisplayLineChart();
+                else if (radioBar.Checked)
+                    MessageBox.Show("ТУТ БАР");
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Select columns, please");
+                MessageBox.Show("Fill in all the fields");
             }
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void radioLine_CheckedChanged(object sender, EventArgs e)
         {
-            int X = XcolumnBox.SelectedIndex;
-            int Y = YColumnBox.SelectedIndex;
-            chart1.Series[0].ChartType = SeriesChartType.Line;
-           // _presenter.DisplayChart(this.chart1, X, Y);
+            labelY.Visible = true;
+            YColumnBox.Visible = true;
+            labelX.Text = "X";
+            _presenter.SetComboBoxX();
+            _presenter.SetComboBoxY();
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void radioBar_CheckedChanged(object sender, EventArgs e)
         {
-            int X = XcolumnBox.SelectedIndex;
-            int Y = YColumnBox.SelectedIndex;
-            chart1.Series[0].ChartType = SeriesChartType.Bar;
-           // _presenter.DisplayChart(this.chart1, X, Y);
+            labelY.Visible = true;
+            YColumnBox.Visible = true;
+            labelX.Text = "X";
+            _presenter.SetComboBoxX();
+            _presenter.SetComboBoxY();
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void radioPie_CheckedChanged(object sender, EventArgs e)
         {
-            int X = XcolumnBox.SelectedIndex;
-            int Y = YColumnBox.SelectedIndex;
-            chart1.Series[0].ChartType = SeriesChartType.Pie;
-           // _presenter.DisplayChart(this.chart1, X, Y);
+            labelX.Text = "Line";
+            _presenter.SetComboBoxByLines(); 
+            labelY.Visible = false;
+            YColumnBox.Visible = false;
+        }
+
+        private void NewChartStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Chart chart = new Chart();
+            chart.Location = new Point(200, 32);
+            chart.Size = new Size(390, 300);
+            this.Controls.Add(chart);
+            Charts.Add(chart);
+            chart.Titles.Add("Chart " + Charts.Count.ToString());
+            chart.Series.Add("Series");
+            chart.ChartAreas.Add("1");
+            chartListBox.Items.Add("Chart " + Charts.Count.ToString());
+            chart.MouseDoubleClick += new MouseEventHandler(SelectChart);
+            this.MouseMove += new MouseEventHandler(MovingChart);
+            this.MouseClick += new MouseEventHandler(MouseRightClick);
+        }
+        private void MovingChart(object sender, MouseEventArgs e)
+        {
+            if (CurrentObj != null)
+            {
+                CurrentObj.GetType().GetProperty("Location").SetValue(CurrentObj, new Point(e.X+5,e.Y+5));
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chartListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void removeChart_Click(object sender, MouseEventArgs e)
+        { 
+                try
+                {
+                    charts.ElementAt(chartListBox.SelectedIndex).Dispose();
+                    charts.RemoveAt(chartListBox.SelectedIndex);
+                    chartListBox.Items.RemoveAt(chartListBox.SelectedIndex);
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    MessageBox.Show("Chart for removing not selected");
+                }
+            
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

@@ -59,5 +59,10 @@ namespace Presenters.Views
         {
 
         }
+
+        private void ProjectView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

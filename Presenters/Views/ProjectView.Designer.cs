@@ -36,18 +36,20 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(30, 29);
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(27, 23);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(428, 384);
+            this.listBox1.Size = new System.Drawing.Size(381, 308);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // AddFileButton
             // 
-            this.AddFileButton.Location = new System.Drawing.Point(464, 29);
+            this.AddFileButton.Location = new System.Drawing.Point(412, 23);
+            this.AddFileButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddFileButton.Name = "AddFileButton";
-            this.AddFileButton.Size = new System.Drawing.Size(164, 40);
+            this.AddFileButton.Size = new System.Drawing.Size(146, 32);
             this.AddFileButton.TabIndex = 1;
             this.AddFileButton.Text = "Add File";
             this.AddFileButton.UseVisualStyleBackColor = true;
@@ -55,9 +57,10 @@
             // 
             // SaveAndExitButton
             // 
-            this.SaveAndExitButton.Location = new System.Drawing.Point(600, 377);
+            this.SaveAndExitButton.Location = new System.Drawing.Point(533, 302);
+            this.SaveAndExitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SaveAndExitButton.Name = "SaveAndExitButton";
-            this.SaveAndExitButton.Size = new System.Drawing.Size(164, 47);
+            this.SaveAndExitButton.Size = new System.Drawing.Size(146, 38);
             this.SaveAndExitButton.TabIndex = 2;
             this.SaveAndExitButton.Text = "Save and exit";
             this.SaveAndExitButton.UseVisualStyleBackColor = true;
@@ -65,14 +68,16 @@
             // 
             // ProjectView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(711, 360);
             this.Controls.Add(this.SaveAndExitButton);
             this.Controls.Add(this.AddFileButton);
             this.Controls.Add(this.listBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ProjectView";
             this.Text = "ProjectView";
+            this.Load += new System.EventHandler(this.ProjectView_Load);
             this.ResumeLayout(false);
 
         }

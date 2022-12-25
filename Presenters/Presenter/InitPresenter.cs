@@ -19,7 +19,6 @@ namespace Presenters.Presenter
         private IDataCache cache;
         public override void InitView()
         {
-            view.Data = _services.GetAllData();
         }
         public InitPresenter(IInitView view) : base(view)
         {
@@ -60,15 +59,15 @@ namespace Presenters.Presenter
                 }
             }
         }
-        public string SelectFile(string filter)
+        public FileInfo SelectFile(string filter)
         {
             using(OpenFileDialog fdb = new OpenFileDialog())
             {
                 fdb.Filter = filter;
                 if (fdb.ShowDialog() == DialogResult.OK)
                 {
-                        string _path = fdb.FileName;
-                        FileInfo fileInfo = new FileInfo(_path);
+                        //string _path = fdb.FileName;
+                        FileInfo fileInfo = new FileInfo(fdb.FileName);
                     if (fileInfo.Extension == ".csv")
                     {
                         _services = new CSVFileAccessService(cache);
@@ -77,8 +76,8 @@ namespace Presenters.Presenter
                     {
                         _services = new TXTFileAccessService(cache);
                     }
-                    view.FileNames.Items.Add(_path);
-                    return _path;
+                    view.FileNames.Items.Add(fileInfo.Name);
+                    return fileInfo;
                 }
                 else
                 {

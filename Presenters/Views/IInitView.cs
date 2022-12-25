@@ -12,7 +12,7 @@ namespace Presenters.Views
 {
     public interface IInitView
     {
-        IDataCache Data { get; set; }
+        IDataCache Data { get;}
         ListBox FileNames { get; }
         void HideView();
         void MakeVisible();

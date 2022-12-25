@@ -1,12 +1,5 @@
 ﻿using Presenters.Presenter;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IServices;
 using DataServices;
@@ -18,6 +11,7 @@ namespace Presenters.Views
     public partial class InitView : Form, IInitView
     {
         private InitPresenter presenter;
+        private ITableView tableView;
         public InitView()
         {
             presenter = new InitPresenter(this);
@@ -26,8 +20,7 @@ namespace Presenters.Views
             TableStripMenuItem.Enabled = false;
         }
 
-        //public IDataSourceRep Data { get => presenter.Service.GetData(); }
-        IDataCache IInitView.Data { get => presenter.Cache; set => throw new NotImplementedException(); }
+        IDataCache IInitView.Data { get => presenter.Cache; }
 
         public ListBox FileNames => listBoxFileLoaded;
 
@@ -35,25 +28,20 @@ namespace Presenters.Views
         {
 
         }
-
-        /*private void ReadFile_Click(object sender, EventArgs e)
-        {
-            presenter.Service.reader(textBox1.Text);
-            //ToTableVizualization.Enabled = true;
-            //saveToFile.Enabled = true;
-        }
-
-        private void select_Click(object sender, EventArgs e)
-        {
-            textBox1.Text = presenter.SelectFile().ToString();
-            //loadFile.Enabled = true;
-        }*/
-
         private void toTableVizualization_Click(object sender, EventArgs e)
         {
-            TableVisualizationView tvzv = new TableVisualizationView(this);
-            this.Hide();
-            tvzv.ShowDialog();   
+            if (tableView == null)
+            {
+                TableVisualizationView tvzv = new TableVisualizationView(this);
+                tableView = tvzv;
+                this.Hide();
+                tvzv.ShowDialog();
+            }
+            else
+            {
+                this.Hide();
+                tableView.MakeVisible();
+            }
         }
         
         private void FileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -96,9 +84,18 @@ namespace Presenters.Views
 
         private void TableStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (tableView == null)
+            {
                 TableVisualizationView tvzv = new TableVisualizationView(this);
                 this.Hide();
+                tableView = tvzv;
                 tvzv.ShowDialog();
+            }
+            else
+            {
+                this.Hide();
+                tableView.MakeVisible();
+            }
 
 
         }
@@ -123,7 +120,7 @@ namespace Presenters.Views
         }
 
 
-        private void label1_Click(object sender, EventArgs e)
+        private void loadedFileLable_Click(object sender, EventArgs e)
         {
 
         }
@@ -137,8 +134,8 @@ namespace Presenters.Views
         {
             try
             {
-                string file = presenter.SelectFile("txt files (*.txt)|*.txt|csv files (*.csv)|*.csv").ToString();
-                presenter.Service.reader(file);
+                System.IO.FileInfo file = presenter.SelectFile("txt files (*.txt)|*.txt|csv files (*.csv)|*.csv");
+                presenter.Service.reader(file.FullName);
                 TableStripMenuItem.Enabled = true;
                 SaveToolStripMenuItem.Enabled = true;
             }

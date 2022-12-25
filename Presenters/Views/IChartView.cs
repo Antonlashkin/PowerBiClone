@@ -13,7 +13,8 @@ namespace Presenters.Views
         ComboBox ComboBoxX { get;}
         ComboBox ComboBoxY { get;}
 
-        List<Chart> Charts { get;}
+        List <Chart> Charts { get; set; }
+        ListBox ChartsBox { get; }
         void HideView();
         void MakeVisible();
 

@@ -33,6 +33,8 @@ namespace Presenters.Views
 
         public IDataCache Storage => _presenter.Service.GetData();
 
+        TextBox ITableView.ValueBox => ValueBox;
+
         private void TableVizualiztionView_Load(object sender, EventArgs e)
         {
             _presenter.DisplayTable();
@@ -58,7 +60,7 @@ namespace Presenters.Views
         private void BackStripMenuItem_Click(object sender, EventArgs e)
         {
             _parentForm.MakeVisible();
-            this.Close();
+            this.Hide();
         }
 
         private void VisualStripMenuItem2_Click(object sender, EventArgs e)
@@ -68,7 +70,7 @@ namespace Presenters.Views
                 ChartView chartView = new ChartView(this);
                 _nextForm = chartView;
                 this.Hide();
-                chartView.ShowDialog();
+                _nextForm.MakeVisible();
             }
             else
             {
@@ -90,6 +92,35 @@ namespace Presenters.Views
         private void TableStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void removeColumnButton_Click(object sender, EventArgs e)
+        {
+            _presenter.RemoveTable();
+            _presenter.DisplayTable();
+        }
+
+        private void ValueMoreThen_Click(object sender, EventArgs e)
+        {
+            _presenter.SelectMoreThen();
+            _presenter.DisplayTable();
+        }
+
+        private void ValueLessThen_Click(object sender, EventArgs e)
+        {
+            _presenter.SelectLessThen();
+            _presenter.DisplayTable();
+        }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            _presenter.ReturnData();
+            _presenter.DisplayTable();
+        }
+
+        public IInitView ReturnInitView()
+        {
+            return _parentForm;
         }
     }
 }

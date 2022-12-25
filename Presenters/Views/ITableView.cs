@@ -12,8 +12,12 @@ namespace Presenters.Views
     {
         DataGridView DataGridView { get;}
 
+        TextBox ValueBox { get; }
+
         IDataCache Storage { get;}
         void HideView();
         void MakeVisible();
+
+        IInitView ReturnInitView();
     }
 }

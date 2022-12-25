@@ -35,6 +35,11 @@
             this.BackStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TableStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VisualStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeColumnButton = new System.Windows.Forms.Button();
+            this.ValueMoreThen = new System.Windows.Forms.Button();
+            this.ValueBox = new System.Windows.Forms.TextBox();
+            this.ValueLessThen = new System.Windows.Forms.Button();
+            this.returnButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -42,13 +47,13 @@
             // dataTable
             // 
             this.dataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataTable.Location = new System.Drawing.Point(290, 48);
+            this.dataTable.Location = new System.Drawing.Point(203, 37);
             this.dataTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataTable.Name = "dataTable";
             this.dataTable.RowHeadersWidth = 51;
             this.dataTable.RowTemplate.Height = 24;
             this.dataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataTable.Size = new System.Drawing.Size(498, 374);
+            this.dataTable.Size = new System.Drawing.Size(585, 402);
             this.dataTable.TabIndex = 0;
             this.dataTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataTableView_CellContentClick);
             // 
@@ -89,8 +94,8 @@
             // BackStripMenuItem
             // 
             this.BackStripMenuItem.Name = "BackStripMenuItem";
-            this.BackStripMenuItem.Size = new System.Drawing.Size(54, 24);
-            this.BackStripMenuItem.Text = "Back";
+            this.BackStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.BackStripMenuItem.Text = "File";
             this.BackStripMenuItem.Click += new System.EventHandler(this.BackStripMenuItem_Click);
             // 
             // TableStripMenuItem
@@ -107,11 +112,63 @@
             this.VisualStripMenuItem2.Text = "Visualization";
             this.VisualStripMenuItem2.Click += new System.EventHandler(this.VisualStripMenuItem2_Click);
             // 
+            // removeColumnButton
+            // 
+            this.removeColumnButton.Location = new System.Drawing.Point(12, 147);
+            this.removeColumnButton.Name = "removeColumnButton";
+            this.removeColumnButton.Size = new System.Drawing.Size(185, 48);
+            this.removeColumnButton.TabIndex = 6;
+            this.removeColumnButton.Text = "Remove table";
+            this.removeColumnButton.UseVisualStyleBackColor = true;
+            this.removeColumnButton.Click += new System.EventHandler(this.removeColumnButton_Click);
+            // 
+            // ValueMoreThen
+            // 
+            this.ValueMoreThen.Location = new System.Drawing.Point(114, 199);
+            this.ValueMoreThen.Name = "ValueMoreThen";
+            this.ValueMoreThen.Size = new System.Drawing.Size(50, 25);
+            this.ValueMoreThen.TabIndex = 7;
+            this.ValueMoreThen.Text = "more";
+            this.ValueMoreThen.UseVisualStyleBackColor = true;
+            this.ValueMoreThen.Click += new System.EventHandler(this.ValueMoreThen_Click);
+            // 
+            // ValueBox
+            // 
+            this.ValueBox.Location = new System.Drawing.Point(75, 202);
+            this.ValueBox.Name = "ValueBox";
+            this.ValueBox.Size = new System.Drawing.Size(33, 22);
+            this.ValueBox.TabIndex = 8;
+            // 
+            // ValueLessThen
+            // 
+            this.ValueLessThen.Location = new System.Drawing.Point(20, 199);
+            this.ValueLessThen.Name = "ValueLessThen";
+            this.ValueLessThen.Size = new System.Drawing.Size(49, 25);
+            this.ValueLessThen.TabIndex = 9;
+            this.ValueLessThen.Text = "less";
+            this.ValueLessThen.UseVisualStyleBackColor = true;
+            this.ValueLessThen.Click += new System.EventHandler(this.ValueLessThen_Click);
+            // 
+            // returnButton
+            // 
+            this.returnButton.Location = new System.Drawing.Point(170, 199);
+            this.returnButton.Name = "returnButton";
+            this.returnButton.Size = new System.Drawing.Size(28, 25);
+            this.returnButton.TabIndex = 10;
+            this.returnButton.Text = "X";
+            this.returnButton.UseVisualStyleBackColor = true;
+            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
+            // 
             // TableVisualizationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.returnButton);
+            this.Controls.Add(this.ValueLessThen);
+            this.Controls.Add(this.ValueBox);
+            this.Controls.Add(this.ValueMoreThen);
+            this.Controls.Add(this.removeColumnButton);
             this.Controls.Add(this.removeRow);
             this.Controls.Add(this.showTable);
             this.Controls.Add(this.dataTable);
@@ -139,5 +196,10 @@
         private System.Windows.Forms.ToolStripMenuItem TableStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem VisualStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem BackStripMenuItem;
+        private System.Windows.Forms.Button removeColumnButton;
+        private System.Windows.Forms.Button ValueMoreThen;
+        private System.Windows.Forms.TextBox ValueBox;
+        private System.Windows.Forms.Button ValueLessThen;
+        private System.Windows.Forms.Button returnButton;
     }
 }

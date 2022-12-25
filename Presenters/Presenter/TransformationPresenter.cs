@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using IDataCacheStorage;
 using Entities;
+using System.Drawing;
 
 namespace Presenters.Presenter
 {
@@ -34,6 +35,7 @@ namespace Presenters.Presenter
         public void DisplayTable()
         {
             int i = 0;
+            int numberOfTable = 0;
             view.DataGridView.Rows.Clear();  
             int count = view.DataGridView.Columns.Count;
             for (i = 0; i < count; i++)
@@ -46,9 +48,12 @@ namespace Presenters.Presenter
                 foreach (string name in table.ColumnsName)
                 {
                     view.DataGridView.Columns.Add(name, name);
+                    if(numberOfTable % 2 == 1)
+                        view.DataGridView.Columns.GetLastColumn(
+                            DataGridViewElementStates.Visible,DataGridViewElementStates.None).DefaultCellStyle.BackColor = Color.Azure;
                 }
               
-                if(table.DataColumn.Count > view.DataGridView.RowCount)
+                if(table.DataColumn.Count > view.DataGridView.RowCount && view.DataGridView.Columns.Count !=0)
                 {
                     int diff = table.DataColumn.Count - view.DataGridView.RowCount;
                     view.DataGridView.Rows.Add(diff);
@@ -66,32 +71,73 @@ namespace Presenters.Presenter
                     i++;
                 }
                 j = j + table.ColumnsName.Count();
+                numberOfTable++;
             }
         }
 
         public void RemoveRow()
         {
-            int removingRow = view.DataGridView.CurrentRow.Index;
-            _services.RemoveRow(removingRow);
-            MessageBox.Show(removingRow.ToString());
+            try
+            {
+                int removingRow = view.DataGridView.CurrentRow.Index;
+                _services.RemoveRow(removingRow);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Row not selected");
+            }
         }
 
-        public void DisplayChart(Chart chart1,int X, int Y)
+        public void RemoveTable()
         {
-            chart1.Series[0].Points.Clear();
-            Axis xAxis = new Axis();
-            xAxis.Title = _services.GetData().GetTable(0).ColumnsName[X];
-            Axis yAxis = new Axis();
-            yAxis.Title = _services.GetData().GetTable(0).ColumnsName[Y];
-            chart1.ChartAreas[0].AxisX = xAxis;
-            chart1.ChartAreas[0].AxisY = yAxis;
-            foreach (List<string> row in _services.GetData().GetTable(0).DataColumn)
-            {
-                double x = Convert.ToDouble(row.ElementAt(X));
-                double y = Convert.ToDouble(row.ElementAt(Y));
-                chart1.Series[0].Points.AddXY(x, y);
-
+            try {
+                int removingTable = view.DataGridView.CurrentCell.ColumnIndex;
+                _services.RemoveTable(removingTable);
             }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Column not selected");
+            }
+        }
+
+        public void SelectMoreThen()
+        {
+            try
+            {
+                double value = Convert.ToDouble(view.ValueBox.Text);
+                int row = view.DataGridView.CurrentCell.ColumnIndex;
+                _services.SelectElementsMoreThen(value, row);
+            }
+            catch(FormatException)
+            {
+                MessageBox.Show("Incorrect delimiter");
+            }
+            catch(NullReferenceException) 
+            {
+                MessageBox.Show("Select Column");
+            }
+        }
+        public void SelectLessThen()
+        {
+            try
+            {
+                double value = Convert.ToDouble(view.ValueBox.Text);
+                int row = view.DataGridView.CurrentCell.ColumnIndex;
+                _services.SelectElementsLessThen(value, row);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Incorrect delimiter");
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Select Column");
+            }
+        }
+
+        public void ReturnData()
+        {
+            _services.ReturnData();
         }
     }
 }
