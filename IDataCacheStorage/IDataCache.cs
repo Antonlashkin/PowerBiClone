@@ -8,7 +8,7 @@ using Entities;
 
 namespace IDataCacheStorage
 {
-    public interface IDataCache
+    public interface IDataCache : ICloneable
     {
         void AddTable(IDataSourceRep _bufferData);
         DataTable GetTable(int index);

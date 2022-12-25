@@ -26,11 +26,15 @@ namespace DataCacheStorage
             _entitiesList.Add(_bufferData.GetTable());
         }
 
+        public void AddTable(DataTable table)
+        {
+            _entitiesList.Add(table);
+        }
+
         public void Clear()
         {
             _entitiesList.Clear();
         }
-
 
         public override string ToString()
         {
@@ -50,6 +54,16 @@ namespace DataCacheStorage
         public List<DataTable> GetAllTables()
         {
             return _entitiesList;
+        }
+
+        public object Clone()
+        {
+            DataCache cloned= new DataCache();
+            foreach(DataTable table in _entitiesList)
+            {
+                cloned.AddTable((DataTable)table.Clone());
+            }
+            return cloned;
         }
     }
 }
