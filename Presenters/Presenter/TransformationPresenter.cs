@@ -135,6 +135,21 @@ namespace Presenters.Presenter
             }
         }
 
+        public void ChangeElement()
+        {
+            try
+            {
+                int column = view.DataGridView.CurrentCell.ColumnIndex;
+                int row = view.DataGridView.CurrentCell.RowIndex;
+                string value = view.DataGridView.CurrentCell.Value.ToString();
+                _services.ChangeElement(value, column, row);
+            }
+            catch
+            {
+
+            }
+        }
+
         public void ReturnData()
         {
             _services.ReturnData();

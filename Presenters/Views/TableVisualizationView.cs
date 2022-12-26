@@ -39,6 +39,11 @@ namespace Presenters.Views
         {
             _presenter.DisplayTable();
         }
+        private void changeValue_click(object sender, DataGridViewCellEventArgs e)
+        {
+            _presenter.ChangeElement();
+           
+        }
 
         private void dataTableView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

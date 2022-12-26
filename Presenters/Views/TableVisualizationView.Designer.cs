@@ -1,4 +1,7 @@
-﻿namespace Presenters.Views
+﻿using System;
+using System.Windows.Forms;
+
+namespace Presenters.Views
 {
     partial class TableVisualizationView
     {
@@ -55,6 +58,8 @@
             this.dataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataTable.Size = new System.Drawing.Size(585, 402);
             this.dataTable.TabIndex = 0;
+           // this.dataTable.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.changeValue_click);
+            this.dataTable.CellEndEdit+= new DataGridViewCellEventHandler(this.changeValue_click);
             this.dataTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataTableView_CellContentClick);
             // 
             // showTable
@@ -186,6 +191,8 @@
             this.PerformLayout();
 
         }
+
+       
 
         #endregion
 

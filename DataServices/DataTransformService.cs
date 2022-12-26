@@ -126,5 +126,25 @@ namespace DataServices
         {
             dataCache = bufferDataCache;
         }
+
+        public void ChangeElement(string newValue, int column, int row)
+        {
+            foreach (DataTable table in dataCache.GetAllTables())
+            {
+                int i = 0;
+                if (column >= table.ColumnsName.Count)
+                {
+                    column -= table.ColumnsName.Count;
+                    i++;
+                    continue;
+                }
+                else
+                {
+                    table.DataColumn.ElementAt(row)[column] = newValue;
+                    return;
+                }
+            }
+
+        }
     }
 }
