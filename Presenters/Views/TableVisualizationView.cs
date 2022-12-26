@@ -99,7 +99,7 @@ namespace Presenters.Views
 
         }
 
-        private void removeColumnButton_Click(object sender, EventArgs e)
+        private void removeTableButton_Click(object sender, EventArgs e)
         {
             _presenter.RemoveTable();
             _presenter.DisplayTable();
@@ -128,6 +128,12 @@ namespace Presenters.Views
         public IInitView ReturnInitView()
         {
             return _parentForm;
+        }
+
+        private void RemoveColoumnButton_Click(object sender, EventArgs e)
+        {
+            _presenter.RemoveColoumn();
+            _presenter.DisplayTable();
         }
     }
 }

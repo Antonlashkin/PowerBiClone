@@ -46,6 +46,34 @@ namespace DataServices
             }
         }
 
+        public void RemoveColoumn(int numOfColumn)
+        {
+            foreach (DataTable table in dataCache.GetAllTables())
+            {
+                if (numOfColumn >= table.ColumnsName.Count)
+                {
+                    numOfColumn -= table.ColumnsName.Count;
+                    continue;
+                }
+                else
+                {
+                    dataCache.GetAllTables().Remove(table);
+
+                    table.ColumnsName.RemoveAt(numOfColumn);
+                    foreach(var row in table.DataColumn)
+                    {
+                        row.RemoveAt(numOfColumn);
+                    }
+                   // table.DataColumn.RemoveAt(numOfColumn);
+
+                    var tmp = new DataSourceRepo();
+                    tmp.DataBuffer = table;
+                    dataCache.AddTable(tmp);
+                    return;
+                }
+            }
+        }
+
         public void RemoveTable(int column)
         {
             foreach (DataTable table in dataCache.GetAllTables())

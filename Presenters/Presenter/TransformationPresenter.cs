@@ -88,6 +88,19 @@ namespace Presenters.Presenter
             }
         }
 
+        public void RemoveColoumn()
+        {
+            try
+            {
+                int removingColoumn = view.DataGridView.CurrentCell.ColumnIndex;
+                _services.RemoveColoumn(removingColoumn);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Coloumn not selected");
+            }
+        }
+
         public void RemoveTable()
         {
             try {

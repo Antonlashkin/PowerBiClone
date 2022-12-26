@@ -38,12 +38,12 @@ namespace Presenters.Views
             this.BackStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TableStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VisualStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeColumnButton = new System.Windows.Forms.Button();
+            this.removeTableButton = new System.Windows.Forms.Button();
             this.ValueMoreThen = new System.Windows.Forms.Button();
             this.ValueBox = new System.Windows.Forms.TextBox();
             this.ValueLessThen = new System.Windows.Forms.Button();
             this.returnButton = new System.Windows.Forms.Button();
-            this.returnButton.Visible= false;
+            this.RemoveColoumnButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,9 +59,8 @@ namespace Presenters.Views
             this.dataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataTable.Size = new System.Drawing.Size(585, 402);
             this.dataTable.TabIndex = 0;
-           // this.dataTable.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.changeValue_click);
-            this.dataTable.CellEndEdit+= new DataGridViewCellEventHandler(this.changeValue_click);
             this.dataTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataTableView_CellContentClick);
+            this.dataTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.changeValue_click);
             // 
             // showTable
             // 
@@ -118,19 +117,19 @@ namespace Presenters.Views
             this.VisualStripMenuItem2.Text = "Visualization";
             this.VisualStripMenuItem2.Click += new System.EventHandler(this.VisualStripMenuItem2_Click);
             // 
-            // removeColumnButton
+            // removeTableButton
             // 
-            this.removeColumnButton.Location = new System.Drawing.Point(12, 147);
-            this.removeColumnButton.Name = "removeColumnButton";
-            this.removeColumnButton.Size = new System.Drawing.Size(185, 48);
-            this.removeColumnButton.TabIndex = 6;
-            this.removeColumnButton.Text = "Remove table";
-            this.removeColumnButton.UseVisualStyleBackColor = true;
-            this.removeColumnButton.Click += new System.EventHandler(this.removeColumnButton_Click);
+            this.removeTableButton.Location = new System.Drawing.Point(12, 204);
+            this.removeTableButton.Name = "removeTableButton";
+            this.removeTableButton.Size = new System.Drawing.Size(185, 48);
+            this.removeTableButton.TabIndex = 6;
+            this.removeTableButton.Text = "Remove table";
+            this.removeTableButton.UseVisualStyleBackColor = true;
+            this.removeTableButton.Click += new System.EventHandler(this.removeTableButton_Click);
             // 
             // ValueMoreThen
             // 
-            this.ValueMoreThen.Location = new System.Drawing.Point(114, 199);
+            this.ValueMoreThen.Location = new System.Drawing.Point(114, 256);
             this.ValueMoreThen.Name = "ValueMoreThen";
             this.ValueMoreThen.Size = new System.Drawing.Size(50, 25);
             this.ValueMoreThen.TabIndex = 7;
@@ -140,14 +139,14 @@ namespace Presenters.Views
             // 
             // ValueBox
             // 
-            this.ValueBox.Location = new System.Drawing.Point(75, 202);
+            this.ValueBox.Location = new System.Drawing.Point(75, 259);
             this.ValueBox.Name = "ValueBox";
             this.ValueBox.Size = new System.Drawing.Size(33, 22);
             this.ValueBox.TabIndex = 8;
             // 
             // ValueLessThen
             // 
-            this.ValueLessThen.Location = new System.Drawing.Point(20, 199);
+            this.ValueLessThen.Location = new System.Drawing.Point(20, 256);
             this.ValueLessThen.Name = "ValueLessThen";
             this.ValueLessThen.Size = new System.Drawing.Size(49, 25);
             this.ValueLessThen.TabIndex = 9;
@@ -157,24 +156,36 @@ namespace Presenters.Views
             // 
             // returnButton
             // 
-            this.returnButton.Location = new System.Drawing.Point(170, 199);
+            this.returnButton.Location = new System.Drawing.Point(170, 256);
             this.returnButton.Name = "returnButton";
             this.returnButton.Size = new System.Drawing.Size(28, 25);
             this.returnButton.TabIndex = 10;
             this.returnButton.Text = "X";
             this.returnButton.UseVisualStyleBackColor = true;
+            this.returnButton.Visible = false;
             this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
+            // 
+            // RemoveColoumnButton
+            // 
+            this.RemoveColoumnButton.Location = new System.Drawing.Point(12, 146);
+            this.RemoveColoumnButton.Name = "RemoveColoumnButton";
+            this.RemoveColoumnButton.Size = new System.Drawing.Size(185, 49);
+            this.RemoveColoumnButton.TabIndex = 11;
+            this.RemoveColoumnButton.Text = "Remove  Coloumn";
+            this.RemoveColoumnButton.UseVisualStyleBackColor = true;
+            this.RemoveColoumnButton.Click += new System.EventHandler(this.RemoveColoumnButton_Click);
             // 
             // TableVisualizationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.RemoveColoumnButton);
             this.Controls.Add(this.returnButton);
             this.Controls.Add(this.ValueLessThen);
             this.Controls.Add(this.ValueBox);
             this.Controls.Add(this.ValueMoreThen);
-            this.Controls.Add(this.removeColumnButton);
+            this.Controls.Add(this.removeTableButton);
             this.Controls.Add(this.removeRow);
             this.Controls.Add(this.showTable);
             this.Controls.Add(this.dataTable);
@@ -204,10 +215,11 @@ namespace Presenters.Views
         private System.Windows.Forms.ToolStripMenuItem TableStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem VisualStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem BackStripMenuItem;
-        private System.Windows.Forms.Button removeColumnButton;
+        private System.Windows.Forms.Button removeTableButton;
         private System.Windows.Forms.Button ValueMoreThen;
         private System.Windows.Forms.TextBox ValueBox;
         private System.Windows.Forms.Button ValueLessThen;
         private System.Windows.Forms.Button returnButton;
+        private Button RemoveColoumnButton;
     }
 }

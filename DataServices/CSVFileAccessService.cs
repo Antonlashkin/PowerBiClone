@@ -91,7 +91,7 @@ namespace DataServices
 
         public static char DetectSeparator(string[] lines)
         {
-            char[] SeparatorChars = { ';', '|', '\t' };
+            char[] SeparatorChars = { ';', '|', '\t' , ',' };
             var q = SeparatorChars.Select(sep => new
             { Separator = sep, Found = lines.GroupBy(line => line.Count(ch => ch == sep)) })
                     .OrderByDescending(res => res.Found.Count(grp => grp.Key > 0))
