@@ -109,12 +109,14 @@ namespace Presenters.Views
         {
             _presenter.SelectMoreThen();
             _presenter.DisplayTable();
+            this.returnButton.Visible = true;
         }
 
         private void ValueLessThen_Click(object sender, EventArgs e)
         {
             _presenter.SelectLessThen();
             _presenter.DisplayTable();
+            this.returnButton.Visible = true;
         }
 
         private void returnButton_Click(object sender, EventArgs e)

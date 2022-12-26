@@ -43,6 +43,7 @@ namespace Presenters.Views
             this.ValueBox = new System.Windows.Forms.TextBox();
             this.ValueLessThen = new System.Windows.Forms.Button();
             this.returnButton = new System.Windows.Forms.Button();
+            this.returnButton.Visible= false;
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();

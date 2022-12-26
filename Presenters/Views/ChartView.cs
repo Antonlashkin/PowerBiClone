@@ -44,13 +44,17 @@ namespace Presenters.Views
 
         private void MouseRightClick(object sender, MouseEventArgs e)
         {
-            if (e.Button.ToString() == "Right")
+            //if (e.Button.ToString() == "Right")
+            if(CurrentObj != null)
                 CurrentObj = null;
         }
 
         private void SelectChart(object sender, MouseEventArgs e)
         {
-                CurrentObj = sender;  
+            if (CurrentObj == null)
+            {
+                CurrentObj = sender;
+            }
         }
 
         private void ChartView_Load(object sender, EventArgs e)
@@ -144,7 +148,17 @@ namespace Presenters.Views
         private void NewChartStripMenuItem_Click(object sender, EventArgs e)
         {
             Chart chart = new Chart();
-            chart.Location = new Point(200, 32);
+            try
+            {
+                Chart lastChart = Charts.Last();
+                Point lastPosition = Charts.Last().Location;
+                lastPosition.Y += 395;
+                chart.Location= lastPosition;
+            }
+            catch(System.InvalidOperationException)
+            {
+                chart.Location = new Point(200, 32);
+            }
             chart.Size = new Size(390, 300);
             this.Controls.Add(chart);
             Charts.Add(chart);
@@ -152,7 +166,8 @@ namespace Presenters.Views
             chart.Series.Add("Series");
             chart.ChartAreas.Add("1");
             chartListBox.Items.Add("Chart " + Charts.Count.ToString());
-            chart.MouseDoubleClick += new MouseEventHandler(SelectChart);
+            chart.MouseClick += new MouseEventHandler(SelectChart);
+            chart.MouseWheel += new MouseEventHandler(ZoomChart);
             this.MouseMove += new MouseEventHandler(MovingChart);
             this.MouseClick += new MouseEventHandler(MouseRightClick);
         }
@@ -164,6 +179,28 @@ namespace Presenters.Views
             }
         }
 
+        private void ZoomChart(object sender, MouseEventArgs e)
+        {
+            var chart = (Chart)sender;
+            Size currentSize = chart.Size;
+            try
+            {
+                if (e.Delta < 0) // Scrolled down.
+                {
+                    currentSize.Width -= 10;
+                    currentSize.Height -= 10;
+                }
+                else if (e.Delta > 0) // Scrolled up.
+                {
+                    currentSize.Width += 10;
+                    currentSize.Height += 10;
+                }
+
+                chart.Size = currentSize;
+            }
+            catch { }
+
+        }
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
