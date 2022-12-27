@@ -36,7 +36,6 @@ namespace Presenters.Views
 
         public ComboBox ComboBoxY => YColumnBox;
 
-//        public List <Chart> Charts =>charts;
 
         public ListBox ChartsBox => chartListBox;
 
@@ -44,7 +43,6 @@ namespace Presenters.Views
 
         private void MouseRightClick(object sender, MouseEventArgs e)
         {
-            //if (e.Button.ToString() == "Right")
             if(CurrentObj != null)
                 CurrentObj = null;
         }
@@ -111,11 +109,15 @@ namespace Presenters.Views
                 else if (radioLine.Checked)
                     _presenter.DisplayLineChart();
                 else if (radioBar.Checked)
-                    MessageBox.Show("ТУТ БАР");
+                    _presenter.DisplayBarChart();
             }
             catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("Fill in all the fields");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Not all data is filled in correctly");
             }
         }
 
@@ -130,11 +132,10 @@ namespace Presenters.Views
 
         private void radioBar_CheckedChanged(object sender, EventArgs e)
         {
-            labelY.Visible = true;
-            YColumnBox.Visible = true;
-            labelX.Text = "X";
+            labelX.Text = "Col";
             _presenter.SetComboBoxX();
-            _presenter.SetComboBoxY();
+            labelY.Visible = false;
+            YColumnBox.Visible = false;
         }
 
         private void radioPie_CheckedChanged(object sender, EventArgs e)

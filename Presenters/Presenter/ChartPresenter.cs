@@ -103,5 +103,17 @@ namespace Presenters.Presenter
             view.Charts.ElementAt(chartIndex).Series[0].Points.DataBindXY(pointsX, pointsY);
            
         }
+
+        public void DisplayBarChart()
+        {
+            int chartIndex = view.ChartsBox.SelectedIndex;
+            view.Charts.ElementAt(chartIndex).Series[0].Points.Clear();
+            view.Charts.ElementAt(chartIndex).Series[0].ChartType = SeriesChartType.RangeBar;
+            List<double> points = new List<double>(_services.GetColumn(view.ComboBoxX.SelectedIndex));
+            for (int i = 0; i < points.Count; i++)
+            {
+                view.Charts.ElementAt(chartIndex).Series[0].Points.AddXY(i, points[i]);
+            }
+        }
     }
 }

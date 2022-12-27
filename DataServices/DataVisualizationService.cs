@@ -28,24 +28,31 @@ namespace DataServices
 
         public List<double> GetColumn(int columnIndex)
         {
-            foreach (DataTable table in dataCache.GetAllTables())
+            try
             {
-                if (columnIndex >= table.ColumnsName.Count)
+                foreach (DataTable table in dataCache.GetAllTables())
                 {
-                    columnIndex -= table.ColumnsName.Count;
-                    continue;
-                }
-                else
-                {
-                    List<double> outList = new List<double>();
-                    foreach (List<string> rows in table.DataColumn)
+                    if (columnIndex >= table.ColumnsName.Count)
                     {
-                        outList.Add(Convert.ToDouble(rows.ElementAt(columnIndex)));
+                        columnIndex -= table.ColumnsName.Count;
+                        continue;
                     }
-                    return outList;
+                    else
+                    {
+                        List<double> outList = new List<double>();
+                        foreach (List<string> rows in table.DataColumn)
+                        {
+                            outList.Add(Convert.ToDouble(rows.ElementAt(columnIndex)));
+                        }
+                        return outList;
+                    }
                 }
+                return null;
             }
-            return null;
+            catch (FormatException)
+            {
+                throw new FormatException();
+            }
         }
 
         public IDataCache GetData()

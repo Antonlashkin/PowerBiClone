@@ -65,6 +65,7 @@ namespace Presenters.Views
         private void BackStripMenuItem_Click(object sender, EventArgs e)
         {
             _parentForm.MakeVisible();
+            _presenter.ReturnData();
             this.Hide();
         }
 

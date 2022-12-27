@@ -124,7 +124,7 @@ namespace DataServices
                 {
                     dataCache.GetAllTables().Remove(table);
 
-                    table.ColumnsName.Insert(numOfColumn, "");
+                    table.ColumnsName.Insert(numOfColumn, "Inserted" + (numOfColumn +1) );
                     foreach (var row in table.DataColumn)
                     {
                         row.Insert(numOfColumn, "");
@@ -140,9 +140,7 @@ namespace DataServices
 
         public void SelectElementsMoreThen(double value, int column)
         {
-            if (bufferDataCache != null)
-                ReturnData();
-            bufferDataCache = (IDataCache)dataCache.Clone();    
+            bufferDataCache = (IDataCache)dataCache.Clone();
             foreach (DataTable table in bufferDataCache.GetAllTables())
             {
                 if (column >= table.ColumnsName.Count)
@@ -155,7 +153,7 @@ namespace DataServices
                     int i = 0;
                     foreach (List<string> rows in table.DataColumn)
                     {
-                        if(Convert.ToDouble(rows.ElementAt(column)) < value)
+                        if (Convert.ToDouble(rows.ElementAt(column)) < value)
                         {
                             RemoveRow(i);
                             i--;
@@ -169,8 +167,6 @@ namespace DataServices
 
         public void SelectElementsLessThen(double value, int column)
         {
-            if (bufferDataCache != null)
-                ReturnData();
             bufferDataCache = (IDataCache)dataCache.Clone();
             foreach (DataTable table in bufferDataCache.GetAllTables())
             {
@@ -197,7 +193,12 @@ namespace DataServices
         }
         public void ReturnData()
         {
-            dataCache = bufferDataCache;
+            if (bufferDataCache != null)
+            {
+                dataCache.Clear();
+                dataCache.Clone(bufferDataCache);
+                bufferDataCache = null;
+            }
         }
 
         public void ChangeElement(string newValue, int column, int row)
