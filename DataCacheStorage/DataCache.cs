@@ -65,5 +65,13 @@ namespace DataCacheStorage
             }
             return cloned;
         }
+
+        public void Clone(IDataCache data)
+        {
+            foreach (DataTable table in data.GetAllTables())
+            {
+                _entitiesList.Add((DataTable)table.Clone());
+            }
+        }
     }
 }

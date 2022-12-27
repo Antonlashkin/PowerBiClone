@@ -14,5 +14,6 @@ namespace IDataCacheStorage
         DataTable GetTable(int index);
         void Clear();
         List<DataTable> GetAllTables();
+        void Clone(IDataCache data);
     }
 }
