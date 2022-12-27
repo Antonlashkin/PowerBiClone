@@ -51,6 +51,9 @@ namespace Presenters.Views
             this.radioPie = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chartListBox = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -111,7 +114,7 @@ namespace Presenters.Views
             // XcolumnBox
             // 
             this.XcolumnBox.FormattingEnabled = true;
-            this.XcolumnBox.Location = new System.Drawing.Point(14, 306);
+            this.XcolumnBox.Location = new System.Drawing.Point(14, 338);
             this.XcolumnBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.XcolumnBox.Name = "XcolumnBox";
             this.XcolumnBox.Size = new System.Drawing.Size(102, 28);
@@ -121,7 +124,7 @@ namespace Presenters.Views
             // YColumnBox
             // 
             this.YColumnBox.FormattingEnabled = true;
-            this.YColumnBox.Location = new System.Drawing.Point(14, 366);
+            this.YColumnBox.Location = new System.Drawing.Point(14, 452);
             this.YColumnBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.YColumnBox.Name = "YColumnBox";
             this.YColumnBox.Size = new System.Drawing.Size(102, 28);
@@ -139,7 +142,7 @@ namespace Presenters.Views
             // labelY
             // 
             this.labelY.AutoSize = true;
-            this.labelY.Location = new System.Drawing.Point(54, 341);
+            this.labelY.Location = new System.Drawing.Point(54, 389);
             this.labelY.Name = "labelY";
             this.labelY.Size = new System.Drawing.Size(20, 20);
             this.labelY.TabIndex = 5;
@@ -198,6 +201,9 @@ namespace Presenters.Views
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.chartListBox);
             this.groupBox1.Controls.Add(this.updateButton);
             this.groupBox1.Controls.Add(this.radioPie);
@@ -226,9 +232,31 @@ namespace Presenters.Views
             this.chartListBox.Name = "chartListBox";
             this.chartListBox.Size = new System.Drawing.Size(109, 104);
             this.chartListBox.TabIndex = 11;
-            this.chartListBox.SelectedIndexChanged += new System.EventHandler(this.chartListBox_SelectedIndexChanged);
-            //this.chartListBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.removeChart_Click);
             this.chartListBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.renameChart_Click);
+            this.chartListBox.SelectedIndexChanged += new System.EventHandler(this.chartListBox_SelectedIndexChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(14, 304);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(102, 26);
+            this.textBox1.TabIndex = 12;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(14, 924);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(102, 26);
+            this.textBox2.TabIndex = 13;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(14, 412);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(104, 26);
+            this.textBox3.TabIndex = 14;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // ChartView
             // 
@@ -273,5 +301,8 @@ namespace Presenters.Views
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox chartListBox;
         private ToolStripMenuItem saveButton;
+        private TextBox textBox2;
+        private TextBox textBox1;
+        private TextBox textBox3;
     }
 }

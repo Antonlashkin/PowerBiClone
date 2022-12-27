@@ -38,6 +38,9 @@ namespace Presenters.Views
 
         public ComboBox ComboBoxY => YColumnBox;
 
+        public TextBox TextBoxX => textBox1;
+        public TextBox TextBoxY => textBox3;
+
 
         public ListBox ChartsBox => chartListBox;
 
@@ -128,6 +131,8 @@ namespace Presenters.Views
         {
             labelY.Visible = true;
             YColumnBox.Visible = true;
+            textBox1.Visible = true;
+            textBox3.Visible = true;
             labelX.Text = "X";
             _presenter.SetComboBoxX();
             _presenter.SetComboBoxY();
@@ -139,6 +144,9 @@ namespace Presenters.Views
             _presenter.SetComboBoxX();
             labelY.Visible = false;
             YColumnBox.Visible = false;
+
+            textBox1.Visible = false;
+            textBox3.Visible = false;
         }
 
         private void radioPie_CheckedChanged(object sender, EventArgs e)
@@ -147,6 +155,10 @@ namespace Presenters.Views
             _presenter.SetComboBoxByLines(); 
             labelY.Visible = false;
             YColumnBox.Visible = false;
+
+
+            textBox1.Visible = false;
+            textBox3.Visible = false;
         }
 
         private void NewChartStripMenuItem_Click(object sender, EventArgs e)
@@ -303,6 +315,16 @@ namespace Presenters.Views
         private void saveButton_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

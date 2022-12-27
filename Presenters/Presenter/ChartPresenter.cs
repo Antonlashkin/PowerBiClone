@@ -113,8 +113,21 @@ namespace Presenters.Presenter
             Chart currentChart = (Chart)view.CurrentChart;
             currentChart.Series[0].Points.Clear();
             currentChart.Series[0].ChartType = SeriesChartType.Spline;
-            currentChart.ChartAreas[0].AxisX.Title = view.ComboBoxX.Text;
-            currentChart.ChartAreas[0].AxisY.Title = view.ComboBoxY.Text;
+            if (view.TextBoxX.Text == null || view.TextBoxX.Text == "")
+            {
+                currentChart.ChartAreas[0].AxisX.Title = "X";
+            }else
+            {
+                currentChart.ChartAreas[0].AxisX.Title = view.TextBoxX.Text;
+            }
+            if (view.TextBoxY.Text == null || view.TextBoxY.Text == "")
+            {
+                currentChart.ChartAreas[0].AxisY.Title = "Y";
+            }
+            else
+            {
+                currentChart.ChartAreas[0].AxisY.Title = view.TextBoxY.Text;
+            }
             List<double> pointsX = new List<double>(_services.GetColumn(view.ComboBoxX.SelectedIndex));
             List<double> pointsY = new List<double>(_services.GetColumn(view.ComboBoxY.SelectedIndex));
             if(pointsX.Count > pointsY.Count)
