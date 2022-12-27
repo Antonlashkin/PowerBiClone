@@ -50,6 +50,11 @@ namespace Presenters.Presenter
                     {
                         _services = new TXTFileAccessService(cache);
                     }
+
+                    else if(fileInfo.Extension == ".json")
+                    {
+                        _services = new JsonTableSerializer(ref cache);
+                    }
                   
                     return _path;
                 }
@@ -57,6 +62,29 @@ namespace Presenters.Presenter
                 {
                     return null;
                 }
+            }
+        }
+
+        public FileInfo SelectProject(string filter)
+        {
+            using (OpenFileDialog fdb = new OpenFileDialog())
+            {
+                fdb.Filter = filter;
+                if (fdb.ShowDialog() == DialogResult.OK)
+                {
+                    //string _path = fdb.FileName;
+                    FileInfo fileInfo = new FileInfo(fdb.FileName);
+                    if (fileInfo.Extension == ".json")
+                    {
+                        _services = new JsonTableSerializer(ref cache);
+                    }
+                    return fileInfo;
+                }
+                else
+                {
+                    return null;
+                }
+
             }
         }
         public FileInfo SelectFile(string filter)
@@ -75,6 +103,10 @@ namespace Presenters.Presenter
                     else if (fileInfo.Extension == ".txt")
                     {
                         _services = new TXTFileAccessService(cache);
+                    }
+                    else if (fileInfo.Extension == ".json")
+                    {
+                        _services = new JsonTableSerializer();
                     }
                     view.FileNames.Items.Add(fileInfo.Name);
                     return fileInfo;

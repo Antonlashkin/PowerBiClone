@@ -53,7 +53,7 @@ namespace Presenters.Views
         {
             try
             {
-                string file = presenter.SelectFile("txt files (*.txt)|*.txt|csv files (*.csv)|*.csv").ToString();
+                string file = presenter.SelectProject("json files (*.json)|*.json").ToString();
                 presenter.Service.reader(file);
                 TableStripMenuItem.Enabled = true;
                 SaveToolStripMenuItem.Enabled = true;
@@ -68,8 +68,9 @@ namespace Presenters.Views
         {
             try
             {
-                string file = presenter.SaveFile("txt files (*.txt)|*.txt|csv files (*.csv)|*.csv").ToString();
+                string file = presenter.SaveFile("json files (*.json)|*.json").ToString();
                 presenter.Service.writer(file);
+                
                 MessageBox.Show("The file has been saved");
             }
             catch (NullReferenceException)

@@ -21,6 +21,13 @@ namespace DataCacheStorage
 
         public List<DataTable> EntitiesList { get { return _entitiesList; } set { _entitiesList = value; } }
 
+        public void SetAllTables(List<DataTable> entitiesList)
+        {
+            _entitiesList = entitiesList;
+
+            EntitiesList = entitiesList;
+        }
+
         public void AddTable(IDataSourceRep _bufferData)
         {
             _entitiesList.Add(_bufferData.GetTable());
