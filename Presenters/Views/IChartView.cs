@@ -13,6 +13,7 @@ namespace Presenters.Views
         ComboBox ComboBoxX { get;}
         ComboBox ComboBoxY { get;}
 
+        object CurrentChart { get; }
         List <Chart> Charts { get; set; }
         ListBox ChartsBox { get; }
         void HideView();

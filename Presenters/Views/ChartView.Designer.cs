@@ -40,6 +40,7 @@ namespace Presenters.Views
             this.TableStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VisualMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NewChartStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveButton = new System.Windows.Forms.ToolStripMenuItem();
             this.XcolumnBox = new System.Windows.Forms.ComboBox();
             this.YColumnBox = new System.Windows.Forms.ComboBox();
             this.labelX = new System.Windows.Forms.Label();
@@ -50,13 +51,13 @@ namespace Presenters.Views
             this.radioPie = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chartListBox = new System.Windows.Forms.ListBox();
-            this.saveButton = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BackStripMenuItem,
@@ -64,22 +65,22 @@ namespace Presenters.Views
             this.VisualMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(800, 26);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(900, 31);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // BackStripMenuItem
             // 
             this.BackStripMenuItem.Name = "BackStripMenuItem";
-            this.BackStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.BackStripMenuItem.Size = new System.Drawing.Size(54, 29);
             this.BackStripMenuItem.Text = "File";
             this.BackStripMenuItem.Click += new System.EventHandler(this.BackStripMenuItem_Click);
             // 
             // TableStripMenuItem
             // 
             this.TableStripMenuItem.Name = "TableStripMenuItem";
-            this.TableStripMenuItem.Size = new System.Drawing.Size(58, 24);
+            this.TableStripMenuItem.Size = new System.Drawing.Size(68, 29);
             this.TableStripMenuItem.Text = "Table";
             this.TableStripMenuItem.Click += new System.EventHandler(this.TableStripMenuItem_Click);
             // 
@@ -89,60 +90,67 @@ namespace Presenters.Views
             this.NewChartStripMenuItem,
             this.saveButton});
             this.VisualMenuItem.Name = "VisualMenuItem";
-            this.VisualMenuItem.Size = new System.Drawing.Size(107, 24);
+            this.VisualMenuItem.Size = new System.Drawing.Size(126, 29);
             this.VisualMenuItem.Text = "Visualization";
             this.VisualMenuItem.Click += new System.EventHandler(this.VisualMenuItem_Click);
             // 
             // NewChartStripMenuItem
             // 
             this.NewChartStripMenuItem.Name = "NewChartStripMenuItem";
-            this.NewChartStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.NewChartStripMenuItem.Size = new System.Drawing.Size(196, 34);
             this.NewChartStripMenuItem.Text = "New Chart";
             this.NewChartStripMenuItem.Click += new System.EventHandler(this.NewChartStripMenuItem_Click);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(196, 34);
+            this.saveButton.Text = "Save";
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // XcolumnBox
             // 
             this.XcolumnBox.FormattingEnabled = true;
-            this.XcolumnBox.Location = new System.Drawing.Point(12, 245);
-            this.XcolumnBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.XcolumnBox.Location = new System.Drawing.Point(14, 306);
+            this.XcolumnBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.XcolumnBox.Name = "XcolumnBox";
-            this.XcolumnBox.Size = new System.Drawing.Size(57, 24);
+            this.XcolumnBox.Size = new System.Drawing.Size(102, 28);
             this.XcolumnBox.TabIndex = 2;
             this.XcolumnBox.SelectedIndexChanged += new System.EventHandler(this.XcolumnBox_SelectedIndexChanged);
             // 
             // YColumnBox
             // 
             this.YColumnBox.FormattingEnabled = true;
-            this.YColumnBox.Location = new System.Drawing.Point(12, 293);
-            this.YColumnBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.YColumnBox.Location = new System.Drawing.Point(14, 366);
+            this.YColumnBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.YColumnBox.Name = "YColumnBox";
-            this.YColumnBox.Size = new System.Drawing.Size(58, 24);
+            this.YColumnBox.Size = new System.Drawing.Size(102, 28);
             this.YColumnBox.TabIndex = 3;
             // 
             // labelX
             // 
             this.labelX.AutoSize = true;
-            this.labelX.Location = new System.Drawing.Point(34, 225);
+            this.labelX.Location = new System.Drawing.Point(54, 281);
             this.labelX.Name = "labelX";
-            this.labelX.Size = new System.Drawing.Size(18, 16);
+            this.labelX.Size = new System.Drawing.Size(24, 20);
             this.labelX.TabIndex = 4;
             this.labelX.Text = "X ";
             // 
             // labelY
             // 
             this.labelY.AutoSize = true;
-            this.labelY.Location = new System.Drawing.Point(34, 273);
+            this.labelY.Location = new System.Drawing.Point(54, 341);
             this.labelY.Name = "labelY";
-            this.labelY.Size = new System.Drawing.Size(16, 16);
+            this.labelY.Size = new System.Drawing.Size(20, 20);
             this.labelY.TabIndex = 5;
             this.labelY.Text = "Y";
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(6, 20);
+            this.updateButton.Location = new System.Drawing.Point(24, 25);
             this.updateButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(73, 28);
+            this.updateButton.Size = new System.Drawing.Size(82, 35);
             this.updateButton.TabIndex = 7;
             this.updateButton.Text = "Display";
             this.updateButton.UseVisualStyleBackColor = true;
@@ -152,10 +160,10 @@ namespace Presenters.Views
             // 
             this.radioLine.AutoSize = true;
             this.radioLine.Checked = true;
-            this.radioLine.Location = new System.Drawing.Point(20, 173);
-            this.radioLine.Margin = new System.Windows.Forms.Padding(4);
+            this.radioLine.Location = new System.Drawing.Point(33, 215);
+            this.radioLine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioLine.Name = "radioLine";
-            this.radioLine.Size = new System.Drawing.Size(53, 20);
+            this.radioLine.Size = new System.Drawing.Size(64, 24);
             this.radioLine.TabIndex = 8;
             this.radioLine.TabStop = true;
             this.radioLine.Text = "Line";
@@ -165,10 +173,10 @@ namespace Presenters.Views
             // radioBar
             // 
             this.radioBar.AutoSize = true;
-            this.radioBar.Location = new System.Drawing.Point(20, 145);
-            this.radioBar.Margin = new System.Windows.Forms.Padding(4);
+            this.radioBar.Location = new System.Drawing.Point(33, 179);
+            this.radioBar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioBar.Name = "radioBar";
-            this.radioBar.Size = new System.Drawing.Size(49, 20);
+            this.radioBar.Size = new System.Drawing.Size(59, 24);
             this.radioBar.TabIndex = 9;
             this.radioBar.TabStop = true;
             this.radioBar.Text = "Bar";
@@ -178,10 +186,10 @@ namespace Presenters.Views
             // radioPie
             // 
             this.radioPie.AutoSize = true;
-            this.radioPie.Location = new System.Drawing.Point(20, 201);
-            this.radioPie.Margin = new System.Windows.Forms.Padding(4);
+            this.radioPie.Location = new System.Drawing.Point(33, 250);
+            this.radioPie.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioPie.Name = "radioPie";
-            this.radioPie.Size = new System.Drawing.Size(48, 20);
+            this.radioPie.Size = new System.Drawing.Size(56, 24);
             this.radioPie.TabIndex = 10;
             this.radioPie.Text = "Pie";
             this.radioPie.UseVisualStyleBackColor = true;
@@ -200,9 +208,11 @@ namespace Presenters.Views
             this.groupBox1.Controls.Add(this.radioBar);
             this.groupBox1.Controls.Add(this.XcolumnBox);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox1.Location = new System.Drawing.Point(0, 17);
+            this.groupBox1.Location = new System.Drawing.Point(0, 21);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(85, 1500);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(131, 1875);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -210,30 +220,25 @@ namespace Presenters.Views
             // chartListBox
             // 
             this.chartListBox.FormattingEnabled = true;
-            this.chartListBox.ItemHeight = 16;
-            this.chartListBox.Location = new System.Drawing.Point(6, 53);
+            this.chartListBox.ItemHeight = 20;
+            this.chartListBox.Location = new System.Drawing.Point(14, 66);
+            this.chartListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chartListBox.Name = "chartListBox";
-            this.chartListBox.Size = new System.Drawing.Size(73, 84);
+            this.chartListBox.Size = new System.Drawing.Size(109, 104);
             this.chartListBox.TabIndex = 11;
             this.chartListBox.SelectedIndexChanged += new System.EventHandler(this.chartListBox_SelectedIndexChanged);
-            this.chartListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.removeChart_Click);
-            // 
-            // saveButton
-            // 
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(224, 26);
-            this.saveButton.Text = "Save";
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            //this.chartListBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.removeChart_Click);
+            this.chartListBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.renameChart_Click);
             // 
             // ChartView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 449);
+            this.ClientSize = new System.Drawing.Size(900, 561);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ChartView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChartView";

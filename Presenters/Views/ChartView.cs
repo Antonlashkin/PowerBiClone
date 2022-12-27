@@ -22,7 +22,9 @@ namespace Presenters.Views
         private IInitView _initForm;
         private ChartPresenter _presenter;
         private object CurrentObj;
+        private object SelectedChart;
         private List<Chart> charts = new List<Chart>();
+        
         public ChartView(ITableView form)
         {
             DataVisualizationService dvs = new DataVisualizationService(form.Storage);
@@ -41,6 +43,7 @@ namespace Presenters.Views
 
         public List<Chart> Charts { get => charts; set => charts = value; }
 
+        public object CurrentChart => SelectedChart;
         private void MouseRightClick(object sender, MouseEventArgs e)
         {
             if(CurrentObj != null)
@@ -167,15 +170,46 @@ namespace Presenters.Views
             chart.Series.Add("Series");
             chart.ChartAreas.Add("1");
             chartListBox.Items.Add("Chart " + Charts.Count.ToString());
-            chart.MouseClick += new MouseEventHandler(SelectChart);
+            //chart.MouseClick += new MouseEventHandler(SelectChart);
             chart.MouseWheel += new MouseEventHandler(ZoomChart);
+            chart.MouseDoubleClick += new MouseEventHandler(Chart_MouseDoubleClick);
+            chart.MouseDown += new MouseEventHandler(Chart_SelectChart);
             this.MouseMove += new MouseEventHandler(MovingChart);
-            this.MouseClick += new MouseEventHandler(MouseRightClick);
+            this.MouseDoubleClick += new MouseEventHandler(Window_MouseDoubleClick);
+            //this.MouseClick += new MouseEventHandler(MouseRightClick);
+        }
+
+        private void Chart_SelectChart(object sender, MouseEventArgs e)
+        {
+            System.Console.WriteLine("Chart selected");
+            SelectedChart = sender;
+        }
+        private void Window_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (CurrentObj != null)
+            {
+                System.Console.WriteLine("Object selected");
+                CurrentObj = null;
+            }
+        }
+        private void Chart_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (CurrentObj != null)
+            {
+                System.Console.WriteLine("Object selected");
+                CurrentObj = null;
+            }
+            else
+            {
+                System.Console.WriteLine("Object selected");
+                CurrentObj = sender;
+            }
         }
         private void MovingChart(object sender, MouseEventArgs e)
         {
             if (CurrentObj != null)
             {
+                System.Console.WriteLine("Moving with object");
                 CurrentObj.GetType().GetProperty("Location").SetValue(CurrentObj, new Point(e.X+5,e.Y+5));
             }
         }
@@ -212,7 +246,9 @@ namespace Presenters.Views
 
         }
         private void removeChart_Click(object sender, MouseEventArgs e)
-        { 
+        {
+            if (e.Button == MouseButtons.Middle)
+            {
                 try
                 {
                     charts.ElementAt(chartListBox.SelectedIndex).Dispose();
@@ -223,7 +259,45 @@ namespace Presenters.Views
                 {
                     MessageBox.Show("Chart for removing not selected");
                 }
+            }
             
+        }
+        private void renameChart_Click(object sender, MouseEventArgs e)
+        {
+            System.Console.WriteLine("Button pressed");
+            System.Console.WriteLine(e.Button);
+            if (e.Button == MouseButtons.Left)
+            {
+                System.Console.WriteLine("Left button pressed");
+                try
+                {
+                    string newName = _presenter.EnterNewTextDialog();
+                    if (!string.IsNullOrEmpty(newName))
+                    {
+                        System.Console.WriteLine(newName);
+                        chartListBox.Items[chartListBox.SelectedIndex] = newName;
+                        charts.ElementAt(chartListBox.SelectedIndex).Titles[0].Text = newName;
+                    }
+                    if (newName.Equals("delete77788899/"))
+                    {
+                        try
+                        {
+                            charts.ElementAt(chartListBox.SelectedIndex).Dispose();
+                            charts.RemoveAt(chartListBox.SelectedIndex);
+                            chartListBox.Items.RemoveAt(chartListBox.SelectedIndex);
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            MessageBox.Show("Chart for removing not selected");
+                        }
+                    }
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    MessageBox.Show("Chart for removing not selected");
+                }
+            }
+
         }
 
         private void saveButton_Click(object sender, EventArgs e)
