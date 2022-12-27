@@ -113,6 +113,32 @@ namespace Presenters.Presenter
             }
         }
 
+        public void AddRow()
+        {
+            try
+            {
+                int addingRow = view.DataGridView.CurrentRow.Index + 1;
+                _services.AddRow(addingRow);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Row not selected");
+            }
+        }
+
+        public void AddColoumn()
+        {
+            try
+            {
+                int addingColoumn = view.DataGridView.CurrentCell.ColumnIndex + 1;
+                _services.AddColoumn(addingColoumn);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Coloumn not selected");
+            }
+        }
+
         public void SelectMoreThen()
         {
             try

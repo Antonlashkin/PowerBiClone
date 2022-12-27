@@ -44,6 +44,8 @@ namespace Presenters.Views
             this.ValueLessThen = new System.Windows.Forms.Button();
             this.returnButton = new System.Windows.Forms.Button();
             this.RemoveColoumnButton = new System.Windows.Forms.Button();
+            this.AddRowButton = new System.Windows.Forms.Button();
+            this.AddColoumnButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -175,11 +177,33 @@ namespace Presenters.Views
             this.RemoveColoumnButton.UseVisualStyleBackColor = true;
             this.RemoveColoumnButton.Click += new System.EventHandler(this.RemoveColoumnButton_Click);
             // 
+            // AddRowButton
+            // 
+            this.AddRowButton.Location = new System.Drawing.Point(12, 307);
+            this.AddRowButton.Name = "AddRowButton";
+            this.AddRowButton.Size = new System.Drawing.Size(87, 48);
+            this.AddRowButton.TabIndex = 12;
+            this.AddRowButton.Text = "Add row";
+            this.AddRowButton.UseVisualStyleBackColor = true;
+            this.AddRowButton.Click += new System.EventHandler(this.AddRowButton_Click);
+            // 
+            // AddColoumnButton
+            // 
+            this.AddColoumnButton.Location = new System.Drawing.Point(114, 307);
+            this.AddColoumnButton.Name = "AddColoumnButton";
+            this.AddColoumnButton.Size = new System.Drawing.Size(80, 48);
+            this.AddColoumnButton.TabIndex = 13;
+            this.AddColoumnButton.Text = "Add col";
+            this.AddColoumnButton.UseVisualStyleBackColor = true;
+            this.AddColoumnButton.Click += new System.EventHandler(this.AddColoumnButton_Click);
+            // 
             // TableVisualizationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.AddColoumnButton);
+            this.Controls.Add(this.AddRowButton);
             this.Controls.Add(this.RemoveColoumnButton);
             this.Controls.Add(this.returnButton);
             this.Controls.Add(this.ValueLessThen);
@@ -221,5 +245,7 @@ namespace Presenters.Views
         private System.Windows.Forms.Button ValueLessThen;
         private System.Windows.Forms.Button returnButton;
         private Button RemoveColoumnButton;
+        private Button AddRowButton;
+        private Button AddColoumnButton;
     }
 }

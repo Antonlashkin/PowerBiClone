@@ -64,7 +64,6 @@ namespace DataServices
                     {
                         row.RemoveAt(numOfColumn);
                     }
-                   // table.DataColumn.RemoveAt(numOfColumn);
 
                     var tmp = new DataSourceRepo();
                     tmp.DataBuffer = table;
@@ -88,6 +87,52 @@ namespace DataServices
                 else
                 {
                     dataCache.GetAllTables().Remove(table);
+                    return;
+                }
+            }
+        }
+
+        public void AddRow(int numOfRow)
+        {
+            foreach (DataTable table in dataCache.GetAllTables())
+            {
+                List<string> row = new List<string>(table.ColumnsName.Count);
+                for (int i = 0; i < table.ColumnsName.Count; ++i)
+                    row.Add("");
+
+                if (numOfRow < table.DataColumn.Count)
+                {
+                    table.DataColumn.Insert(numOfRow, row);
+                }
+                else
+                {
+                    table.DataColumn.Add(row);
+                }    
+            }
+        }
+
+        public void AddColoumn(int numOfColumn)
+        {
+            foreach (DataTable table in dataCache.GetAllTables())
+            {
+                if (numOfColumn >= table.ColumnsName.Count)
+                {
+                    numOfColumn -= table.ColumnsName.Count;
+                    continue;
+                }
+                else
+                {
+                    dataCache.GetAllTables().Remove(table);
+
+                    table.ColumnsName.Insert(numOfColumn, "");
+                    foreach (var row in table.DataColumn)
+                    {
+                        row.Insert(numOfColumn, "");
+                    }
+
+                    var tmp = new DataSourceRepo();
+                    tmp.DataBuffer = table;
+                    dataCache.AddTable(tmp);
                     return;
                 }
             }

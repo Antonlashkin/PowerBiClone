@@ -11,8 +11,10 @@ namespace IServices
     {
         IDataCache GetData();
         void RemoveRow(int row);
-        void RemoveColoumn(int column);
+        void RemoveColoumn(int numOfColumn);
         void RemoveTable(int column);
+        void AddRow(int numOfRow);
+        void AddColoumn(int numOfColumn);
         void SelectElementsMoreThen(double value, int column);
         void SelectElementsLessThen(double value, int column);
 

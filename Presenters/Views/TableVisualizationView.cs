@@ -135,5 +135,17 @@ namespace Presenters.Views
             _presenter.RemoveColoumn();
             _presenter.DisplayTable();
         }
+
+        private void AddRowButton_Click(object sender, EventArgs e)
+        {
+            _presenter.AddRow();
+            _presenter.DisplayTable();
+        }
+
+        private void AddColoumnButton_Click(object sender, EventArgs e)
+        {
+            _presenter.AddColoumn();
+            _presenter.DisplayTable();
+        }
     }
 }
